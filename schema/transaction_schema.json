@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FraudGuard Transaction Event Schema",
+  "type": "object",
+  "required": [
+    "transaction_id",
+    "user_id",
+    "timestamp",
+    "amount",
+    "velocity_6h",
+    "zip_count_4w",
+    "payment_type",
+    "merchant_category",
+    "geo_distance_km",
+    "device_os",
+    "fraud_bool"
+  ],
+  "properties": {
+    "transaction_id": {
+      "type": "string",
+      "description": "Unique identifier for the transaction (e.g. tx_1001)"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Unique identifier for the cardholder/account (e.g. usr_4012)"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp when transaction occurred"
+    },
+    "amount": {
+      "type": "number",
+      "minimum": 0.01,
+      "description": "Transaction monetary amount in USD"
+    },
+    "velocity_6h": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of transactions attempted by user in past 6 hours"
+    },
+    "zip_count_4w": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of distinct ZIP codes used in past 4 weeks"
+    },
+    "payment_type": {
+      "type": "string",
+      "enum": ["card_present", "online_checkout", "contactless"],
+      "description": "Channel used for payment execution"
+    },
+    "merchant_category": {
+      "type": "string",
+      "description": "Category of merchant (e.g. electronics, grocery, crypto_exchange)"
+    },
+    "geo_distance_km": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Distance in kilometers from user's primary residence"
+    },
+    "device_os": {
+      "type": "string",
+      "description": "Operating system of the initiating device (android, ios, windows, mac, linux)"
+    },
+    "fraud_bool": {
+      "type": "integer",
+      "enum": [0, 1],
+      "description": "Ground truth indicator from BAF dataset (0 = Legitimate, 1 = Fraudulent)"
+    }
+  }
+}
