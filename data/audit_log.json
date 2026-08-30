@@ -1,0 +1,129 @@
+[
+  {
+    "transaction_id": "tx_test_router_1",
+    "amount": 250.0,
+    "rule_score": 0.8,
+    "ml_score": 0.963527500629425,
+    "total_risk": 0.963527500629425,
+    "decision": "BLOCK",
+    "triggered_rules": [
+      "AMOUNT_ANOMALY",
+      "CHANNEL_RISK"
+    ],
+    "_ts": "2026-08-26T11:03:19.138553Z"
+  },
+  {
+    "transaction_id": "tx_fg_2",
+    "amount": 125.05,
+    "rule_score": 0.0,
+    "ml_score": 0.08463333547115326,
+    "total_risk": 0.08463333547115326,
+    "decision": "ALLOW",
+    "triggered_rules": [],
+    "id": "tx_fg_2",
+    "_ts": "2026-08-26T11:06:49.094973Z"
+  },
+  {
+    "transaction_id": "tx_fg_4",
+    "amount": 172.97,
+    "rule_score": 0.0,
+    "ml_score": 0.32164913415908813,
+    "total_risk": 0.32164913415908813,
+    "decision": "ALLOW",
+    "triggered_rules": [],
+    "id": "tx_fg_4",
+    "_ts": "2026-08-26T11:06:49.614576Z"
+  },
+  {
+    "transaction_id": "tx_fg_10",
+    "amount": 151.13,
+    "rule_score": 0.4,
+    "ml_score": 0.9329503178596497,
+    "total_risk": 0.9329503178596497,
+    "decision": "BLOCK",
+    "triggered_rules": [
+      "CHANNEL_RISK"
+    ],
+    "id": "tx_fg_10",
+    "_ts": "2026-08-26T11:06:50.134164Z"
+  },
+  {
+    "transaction_id": "tx_fg_11",
+    "amount": 143.41,
+    "rule_score": 0.0,
+    "ml_score": 0.009595218114554882,
+    "total_risk": 0.009595218114554882,
+    "decision": "ALLOW",
+    "triggered_rules": [],
+    "id": "tx_fg_11",
+    "_ts": "2026-08-26T11:06:50.651967Z"
+  },
+  {
+    "transaction_id": "tx_fg_12",
+    "amount": 168.39,
+    "rule_score": 0.4,
+    "ml_score": 0.8926637172698975,
+    "total_risk": 0.8926637172698975,
+    "decision": "BLOCK",
+    "triggered_rules": [
+      "CHANNEL_RISK"
+    ],
+    "id": "tx_fg_12",
+    "_ts": "2026-08-26T11:06:51.172394Z"
+  },
+  {
+    "transaction_id": "tx_fg_13",
+    "amount": 131.0,
+    "rule_score": 0.0,
+    "ml_score": 0.009595218114554882,
+    "total_risk": 0.009595218114554882,
+    "decision": "ALLOW",
+    "triggered_rules": [],
+    "id": "tx_fg_13",
+    "_ts": "2026-08-26T11:06:51.691583Z"
+  },
+  {
+    "transaction_id": "tx_fg_20",
+    "amount": 147.21,
+    "rule_score": 0.0,
+    "ml_score": 0.008307555690407753,
+    "total_risk": 0.008307555690407753,
+    "decision": "ALLOW",
+    "triggered_rules": [],
+    "id": "tx_fg_20",
+    "_ts": "2026-08-26T11:06:52.209064Z"
+  },
+  {
+    "transaction_id": "tx_fg_22",
+    "amount": 168.39,
+    "rule_score": 0.0,
+    "ml_score": 0.2328525185585022,
+    "total_risk": 0.2328525185585022,
+    "decision": "ALLOW",
+    "triggered_rules": [],
+    "id": "tx_fg_22",
+    "_ts": "2026-08-26T11:06:52.727726Z"
+  },
+  {
+    "transaction_id": "tx_fg_24",
+    "amount": 175.8,
+    "rule_score": 0.0,
+    "ml_score": 0.2663097381591797,
+    "total_risk": 0.2663097381591797,
+    "decision": "ALLOW",
+    "triggered_rules": [],
+    "id": "tx_fg_24",
+    "_ts": "2026-08-26T11:06:53.246135Z"
+  },
+  {
+    "transaction_id": "tx_fg_29",
+    "amount": 161.83,
+    "rule_score": 0.0,
+    "ml_score": 0.1486697643995285,
+    "total_risk": 0.1486697643995285,
+    "decision": "ALLOW",
+    "triggered_rules": [],
+    "id": "tx_fg_29",
+    "_ts": "2026-08-26T11:06:53.763836Z"
+  }
+]

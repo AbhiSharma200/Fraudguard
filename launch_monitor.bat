@@ -2,5 +2,5 @@
 title FraudGuard Module 1 — Live Stream Telemetry Web Monitor
 cls
 echo Starting FraudGuard Stream Telemetry Web Monitor at http://localhost:8080 ...
-python "C:\Users\hp\.gemini\antigravity\scratch\fraudguard-datapipeline\src\stream_monitor.py"
+python "src\stream_monitor.py"
 pause

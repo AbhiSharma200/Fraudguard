@@ -224,7 +224,7 @@ class TelemetryHTTPRequestHandler(BaseHTTPRequestHandler):
         pass
 
 def run_server(port=8080):
-    server_address = ('', port)
+    server_address = ('127.0.0.1', port)
     httpd = HTTPServer(server_address, TelemetryHTTPRequestHandler)
     print(f"\n==========================================================================")
     print(f" FraudGuard Dashboard Server Running at: http://localhost:{port}")

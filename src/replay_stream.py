@@ -51,15 +51,21 @@ def run_replay(interval=0.5, test_mode=False):
     suspicious_count = 0
 
     try:
+        # Initialize Fraud Router
+        try:
+            from .router_function import FraudRouter
+            router = FraudRouter(model_path="fraud_model.pkl")
+            print(f" {GREEN}Fraud Router Initialized.{RESET}")
+        except ImportError:
+            router = None
+            print(f" {YELLOW}Warning: Fraud Router not found. Using ground truth labels.{RESET}")
+
         while True:
             for row in transactions:
                 sent_count += 1
                 amount = float(row.get("amount", 0.0))
                 txn_type = row.get("txn_type", "CREDIT")
                 is_suspicious = int(row.get("is_suspicious", 0)) == 1
-                
-                if is_suspicious:
-                    suspicious_count += 1
 
                 payload = {
                     "transaction_id": row.get("transaction_id", f"tx_{sent_count}"),
@@ -68,11 +74,26 @@ def run_replay(interval=0.5, test_mode=False):
                     "timestamp": datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
                     "amount": amount,
                     "txn_type": txn_type,
-                    "status": "SUSPICIOUS" if is_suspicious else "ALLOW"
+                    "simulation_step": int(row.get("simulation_step", 1))
                 }
 
-                status_tag = f"{RED}{BOLD}[ SUSPICIOUS TRANSACTION ]{RESET}" if is_suspicious else f"{GREEN}[ ALLOWED ]{RESET}"
+                # Evaluate using Module 5 (Decision Router)
+                if router:
+                    result = router.route_transaction(payload)
+                    decision = result["decision"]
+                    payload["status"] = decision
+                else:
+                    decision = "BLOCK" if is_suspicious else "ALLOW"
+                    payload["status"] = decision
+
+                if decision == "BLOCK" or decision == "REVIEW_QUEUE":
+                    suspicious_count += 1
+                    status_tag = f"{RED}{BOLD}[ {decision} ]{RESET}"
+                else:
+                    status_tag = f"{GREEN}[ ALLOWED ]{RESET}"
+
                 print(f" [{sent_count:04d}] {payload['timestamp']} | {payload['transaction_id']} | Sender: {payload['source_account']} -> Receiver: {payload['destination_account']} | Amt: ${payload['amount']:>8.2f} | Type: {payload['txn_type']:<7} | Status: {status_tag}")
+
                 
                 # Write to telemetry file for FraudGuard Frontend
                 telemetry_file = os.path.join(SCRIPT_DIR, "live_telemetry.json")
