@@ -1,0 +1,94 @@
+[
+  {
+    "feature": "FEATURE_6_DASHBOARD_DETAIL_VIEW",
+    "test_case": "Click transaction row -> sidebar opens, all fields populated via /transaction/{id}",
+    "input": {
+      "endpoint": "/transaction/tx_f6_detail_test"
+    },
+    "expected_output": {
+      "transaction_id": "tx_f6_detail_test",
+      "has_all_blocks": true
+    },
+    "actual_output": {
+      "transaction_id": "tx_f6_detail_test",
+      "keys": [
+        "transaction_id",
+        "account_id",
+        "source_account",
+        "timestamp",
+        "amount",
+        "merchant",
+        "merchant_category",
+        "risk_score",
+        "decision",
+        "status",
+        "flags",
+        "origin",
+        "traceback",
+        "location_check",
+        "time_analysis",
+        "pii_enrichment",
+        "id",
+        "_ts",
+        "ttl_epoch",
+        "account_history_last_5"
+      ]
+    },
+    "passed": true,
+    "notes": "/transaction/{id} returns full forensic payload with origin, traceback, location_check, time_analysis, and 5-txn history."
+  },
+  {
+    "feature": "FEATURE_6_DASHBOARD_DETAIL_VIEW",
+    "test_case": "Click outside sidebar -> sidebar closes, main table remains visible and responsive",
+    "input": {
+      "action": "click #sidebar-backdrop"
+    },
+    "expected_output": {
+      "has_backdrop_close": true,
+      "has_main_table": true,
+      "has_mobile_responsive_css": true
+    },
+    "actual_output": {
+      "has_backdrop_close": true,
+      "has_main_table": true,
+      "has_mobile_responsive_css": true
+    },
+    "passed": true,
+    "notes": "Backdrop click handler closes slide-in sidebar without removing or breaking main table."
+  },
+  {
+    "feature": "FEATURE_6_DASHBOARD_DETAIL_VIEW",
+    "test_case": "Export JSON -> valid parseable JSON file downloads",
+    "input": {
+      "endpoint": "/transaction/tx_f6_detail_test/export"
+    },
+    "expected_output": {
+      "valid_json": true,
+      "content_disposition": "attachment; filename=\"transaction_tx_f6_detail_test.json\""
+    },
+    "actual_output": {
+      "content_disposition": "attachment; filename=\"transaction_tx_f6_detail_test.json\"",
+      "parsed_transaction_id": "tx_f6_detail_test"
+    },
+    "passed": true,
+    "notes": "Export endpoint and client blob download produce valid, parseable JSON."
+  },
+  {
+    "feature": "FEATURE_6_DASHBOARD_DETAIL_VIEW",
+    "test_case": "Slow network shows loading spinner + paginated transaction feed",
+    "input": {
+      "endpoint": "/api/transactions?page=1&limit=5"
+    },
+    "expected_output": {
+      "has_spinner": true,
+      "page": 1
+    },
+    "actual_output": {
+      "has_spinner": true,
+      "page": 1,
+      "total_count": 34
+    },
+    "passed": true,
+    "notes": "Sidebar displays animated CSS spinner while fetching transaction details and supports pagination."
+  }
+]

@@ -1,0 +1,480 @@
+[
+  {
+    "test_id": "T-001",
+    "feature": "LAMBDA_SCORING_ENGINE",
+    "category": "HAPPY PATH",
+    "input": {
+      "transaction_id": "T001_clean",
+      "source_account": "acc_1",
+      "amount": 42.5,
+      "txn_type": "CREDIT",
+      "origin_ip": "192.0.2.1",
+      "transaction_city": "New York",
+      "transaction_country": "US",
+      "timestamp": "2026-10-23T14:00:00+00:00"
+    },
+    "expected": {
+      "statusCode": 200,
+      "decision": "ALLOW",
+      "status": "APPROVED",
+      "risk_score": 0
+    },
+    "actual": {
+      "statusCode": 200,
+      "decision": "ALLOW",
+      "status": "APPROVED",
+      "risk_score": 0
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-002",
+    "feature": "LAMBDA_SCORING_ENGINE",
+    "category": "HAPPY PATH",
+    "input": {
+      "transaction_id": "T002_review",
+      "source_account": "acc_2",
+      "amount": 120.0,
+      "txn_type": "CREDIT",
+      "origin_ip": "198.51.100.50",
+      "transaction_city": "New York",
+      "transaction_country": "US",
+      "registered_country": "US",
+      "local_hour": 2,
+      "timestamp": "2026-10-23T14:05:00+00:00"
+    },
+    "expected": {
+      "statusCode": 200,
+      "decision": "REVIEW_QUEUE",
+      "status": "PENDING_REVIEW",
+      "risk_score": 55
+    },
+    "actual": {
+      "statusCode": 200,
+      "decision": "REVIEW_QUEUE",
+      "status": "PENDING_REVIEW",
+      "risk_score": 55
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-003",
+    "feature": "QUARANTINE_PIPELINE",
+    "category": "HAPPY PATH",
+    "input": {
+      "transaction_id": "T003_block",
+      "source_account": "acc_10",
+      "amount": 950.0,
+      "txn_type": "WIRE",
+      "origin_ip": "185.220.101.1",
+      "transaction_city": "Frankfurt",
+      "transaction_country": "DE",
+      "timestamp": "2026-10-23T14:10:00+00:00"
+    },
+    "expected": {
+      "statusCode": 202,
+      "decision": "BLOCK",
+      "status": "QUARANTINED",
+      "risk_score_min": 85
+    },
+    "actual": {
+      "statusCode": 202,
+      "decision": "BLOCK",
+      "status": "QUARANTINED",
+      "risk_score": 100
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-004",
+    "feature": "LAMBDA_SCORING_ENGINE",
+    "category": "EDGE CASE",
+    "input": {
+      "transaction_id": "T004_null_fields",
+      "source_account": null,
+      "amount": null,
+      "txn_type": null,
+      "origin_ip": null,
+      "timestamp": null
+    },
+    "expected": {
+      "statusCode": 200,
+      "amount": 0.0,
+      "decision": "ALLOW"
+    },
+    "actual": {
+      "statusCode": 200,
+      "amount": 0.0,
+      "decision": "ALLOW"
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-005",
+    "feature": "RULE_ENGINE_AND_ROUTER",
+    "category": "EDGE CASE",
+    "input": {
+      "transaction_id": "T005_str_amount",
+      "source_account": "acc_1",
+      "amount": "200.50",
+      "txn_type": "WIRE",
+      "origin_ip": "192.0.2.1",
+      "transaction_city": "New York",
+      "transaction_country": "US",
+      "timestamp": "2026-10-23T14:20:00+00:00"
+    },
+    "expected": {
+      "statusCode": 202,
+      "amount": 200.5,
+      "flags_include": [
+        "AMOUNT_ANOMALY",
+        "CHANNEL_RISK"
+      ]
+    },
+    "actual": {
+      "statusCode": 202,
+      "amount": 200.5,
+      "flags": [
+        "AMOUNT_ANOMALY",
+        "CHANNEL_RISK",
+        "AMOUNT_SPIKE"
+      ]
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-006",
+    "feature": "RULE_ENGINE_VELOCITY",
+    "category": "EDGE CASE",
+    "input": {
+      "tx1_timestamp": "2026-10-23T14:00:00Z",
+      "tx2_timestamp": null
+    },
+    "expected": {
+      "error": null,
+      "velocity_evaluated": true
+    },
+    "actual": {
+      "error": null,
+      "velocity_evaluated": true
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-007",
+    "feature": "AMOUNT_VALIDATION_AND_DYNAMODB",
+    "category": "EDGE CASE",
+    "input": {
+      "nan_amount": "float('nan')",
+      "inf_amount": "float('inf')"
+    },
+    "expected": {
+      "nan_statusCode": 400,
+      "inf_statusCode": 400,
+      "ddb_rejected_nan": true
+    },
+    "actual": {
+      "nan_statusCode": 400,
+      "inf_statusCode": 400,
+      "ddb_rejected_nan": true
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-008",
+    "feature": "ENRICHMENT_PIPELINE",
+    "category": "EDGE CASE",
+    "input": {
+      "transaction_id": "T008_first_unknown",
+      "source_account": "acc_completely_unknown_999",
+      "amount": 15.0,
+      "timestamp": "2026-10-23T14:00:00+00:00"
+    },
+    "expected": {
+      "statusCode": 200,
+      "previous_transaction_id": null,
+      "enrichment_status": "NOT_FOUND"
+    },
+    "actual": {
+      "statusCode": 200,
+      "previous_transaction_id": null,
+      "enrichment_status": "NOT_FOUND"
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-009",
+    "feature": "RISK_SCORE_BOUNDARY_50",
+    "category": "BOUNDARY",
+    "input": {
+      "transaction_id": "T009_score_50",
+      "source_account": "acc_1",
+      "amount": 160.0,
+      "txn_type": "WIRE",
+      "origin_ip": "192.0.2.1",
+      "transaction_city": "New York",
+      "transaction_country": "CA",
+      "timestamp": "2026-10-23T16:00:00+00:00"
+    },
+    "expected": {
+      "risk_score": 50,
+      "decision": "REVIEW_QUEUE",
+      "status": "PENDING_REVIEW"
+    },
+    "actual": {
+      "risk_score": 50,
+      "decision": "REVIEW_QUEUE",
+      "status": "PENDING_REVIEW",
+      "flags": [
+        "CHANNEL_RISK",
+        "INTERNATIONAL_TRANSACTION"
+      ]
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-010",
+    "feature": "VELOCITY_BOUNDARY_5_VS_6",
+    "category": "BOUNDARY",
+    "input": {
+      "account": "acc_5",
+      "tx_count": 6,
+      "interval_mins": 5
+    },
+    "expected": {
+      "tx5_velocity": 5,
+      "tx5_has_spike": false,
+      "tx6_velocity": 6,
+      "tx6_has_spike": true
+    },
+    "actual": {
+      "tx5_velocity": 5,
+      "tx5_flags": [
+        "LOCATION_MISMATCH"
+      ],
+      "tx6_velocity": 6,
+      "tx6_flags": [
+        "HIGH_VELOCITY",
+        "VELOCITY_SPIKE",
+        "LOCATION_MISMATCH"
+      ]
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-011",
+    "feature": "FEATURE_4_IMPOSSIBLE_TRAVEL_ZERO_TIME_BOUNDARY",
+    "category": "BOUNDARY",
+    "input": {
+      "tx1": {
+        "transaction_id": "T011_mumbai_t0",
+        "source_account": "acc_6",
+        "amount": 25.0,
+        "origin_ip": "203.0.113.10",
+        "transaction_city": "Mumbai",
+        "transaction_country": "IN",
+        "timestamp": "2026-10-23T18:00:00Z"
+      },
+      "tx2": {
+        "transaction_id": "T011_london_t0",
+        "source_account": "acc_6",
+        "amount": 25.0,
+        "origin_ip": "198.51.100.20",
+        "transaction_city": "London",
+        "transaction_country": "GB",
+        "timestamp": "2026-10-23T18:00:00Z"
+      }
+    },
+    "expected": {
+      "is_impossible_travel": true,
+      "flags_include": "IMPOSSIBLE_TRAVEL",
+      "decision": "BLOCK"
+    },
+    "actual": {
+      "location_check": {
+        "account_registered_city": "London",
+        "account_registered_country": "GB",
+        "transaction_city": "London",
+        "transaction_country": "GB",
+        "distance_km": 0.0,
+        "is_international": false,
+        "is_impossible_travel": true,
+        "travel_speed_kmh": 25890120.0
+      },
+      "flags": [
+        "RAPID_SUCCESSION",
+        "IMPOSSIBLE_TRAVEL"
+      ],
+      "decision": "BLOCK"
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-012",
+    "feature": "INPUT_VALIDATION_AND_IDEMPOTENCY",
+    "category": "ADVERSARIAL",
+    "input": {
+      "malformed": "{bad_json",
+      "negative_amount": -50.0,
+      "duplicate_id": "T001_clean"
+    },
+    "expected": {
+      "malformed_status": 400,
+      "negative_status": 400,
+      "duplicate_status": 409
+    },
+    "actual": {
+      "malformed_status": 400,
+      "negative_status": 400,
+      "duplicate_status": 409
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-013",
+    "feature": "TIME_ANALYZER_FUTURE_TIMESTAMP_POISONING",
+    "category": "ADVERSARIAL",
+    "input": {
+      "tx1_future": {
+        "transaction_id": "T013_future_poison",
+        "source_account": "acc_7",
+        "amount": 20.0,
+        "origin_ip": "192.0.2.1",
+        "transaction_city": "New York",
+        "transaction_country": "US",
+        "timestamp": "2099-01-01T00:00:00Z"
+      },
+      "tx2_normal": {
+        "transaction_id": "T013_normal_after_future",
+        "source_account": "acc_7",
+        "amount": 20.0,
+        "origin_ip": "192.0.2.1",
+        "transaction_city": "New York",
+        "transaction_country": "US",
+        "timestamp": "2026-10-23T15:00:00Z"
+      }
+    },
+    "expected": {
+      "false_rapid_succession": false
+    },
+    "actual": {
+      "false_rapid_succession": false,
+      "time_analysis": {
+        "transaction_hour": 11,
+        "transaction_day_of_week": 4,
+        "is_night_transaction": false,
+        "is_weekend": false,
+        "account_typical_hours": [
+          19
+        ],
+        "hour_anomaly": true,
+        "time_since_last_txn_mins": null
+      },
+      "flags": [
+        "LOCATION_MISMATCH",
+        "NEW_ACCOUNT"
+      ]
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-014",
+    "feature": "TRACEBACK_QUARANTINE_VELOCITY_TRACKING",
+    "category": "ADVERSARIAL",
+    "input": {
+      "account": "acc_attacker_tor",
+      "blocked_tx_count": 6
+    },
+    "expected": {
+      "account_transaction_count": 6,
+      "velocity_1hr": 6,
+      "has_velocity_spike": true
+    },
+    "actual": {
+      "account_transaction_count": 6,
+      "velocity_1hr": 6,
+      "flags": [
+        "HIGH_VELOCITY",
+        "ORIGIN_TOR",
+        "VELOCITY_SPIKE",
+        "RAPID_SUCCESSION",
+        "INTERNATIONAL_TRANSACTION"
+      ]
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-015",
+    "feature": "DASHBOARD_XSS_AND_HTTP_HANDLER_HARDENING",
+    "category": "ADVERSARIAL",
+    "input": {
+      "html_escape_check": true,
+      "query": "/api/transactions?page=abc&limit=xyz",
+      "post_release_body": "[]",
+      "url_encoded_tx_id": "tx_special%20id%27100"
+    },
+    "expected": {
+      "has_html_escape": true,
+      "query_status": 200,
+      "post_release_status": 400,
+      "url_encoded_lookup_status": 200
+    },
+    "actual": {
+      "has_html_escape": true,
+      "query_status": 200,
+      "post_release_status": 400,
+      "url_encoded_lookup_status": 200
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  },
+  {
+    "test_id": "T-016",
+    "feature": "FULL_REGRESSION_SUITE_FEATURES_1_TO_7",
+    "category": "REGRESSION",
+    "input": {
+      "unit_tests": 27,
+      "integration_scenarios": 5
+    },
+    "expected": {
+      "unit_passed": 27,
+      "integration_passed": 5
+    },
+    "actual": {
+      "unit_passed": 27,
+      "integration_passed": 5
+    },
+    "passed": true,
+    "bug_found": null,
+    "severity": null
+  }
+]

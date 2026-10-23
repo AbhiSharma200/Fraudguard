@@ -1,71 +1,101 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "FraudGuard Transaction Event Schema",
+  "title": "FraudGuard Enriched Transaction Event Schema",
   "type": "object",
   "required": [
     "transaction_id",
-    "user_id",
     "timestamp",
-    "amount",
-    "velocity_6h",
-    "zip_count_4w",
-    "payment_type",
-    "merchant_category",
-    "geo_distance_km",
-    "device_os",
-    "fraud_bool"
+    "amount"
   ],
   "properties": {
-    "transaction_id": {
-      "type": "string",
-      "description": "Unique identifier for the transaction (e.g. tx_1001)"
+    "transaction_id": { "type": "string" },
+    "account_id": { "type": "string" },
+    "source_account": { "type": "string" },
+    "destination_account": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "amount": { "type": "number", "minimum": 0.0 },
+    "txn_type": { "type": "string" },
+    "merchant": { "type": "string" },
+    "merchant_category": { "type": "string" },
+    "risk_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "decision": { "type": "string", "enum": ["ALLOW", "REVIEW_QUEUE", "BLOCK"] },
+    "status": { "type": "string", "enum": ["APPROVED", "PENDING_REVIEW", "QUARANTINED", "RELEASED", "CONFIRMED_FRAUD"] },
+    "flags": { "type": "array", "items": { "type": "string" } },
+    "origin": {
+      "type": "object",
+      "properties": {
+        "ip_address": { "type": "string" },
+        "country": { "type": "string" },
+        "city": { "type": "string" },
+        "region": { "type": "string" },
+        "isp": { "type": "string" },
+        "connection_type": { "type": "string", "enum": ["mobile", "broadband", "vpn", "proxy", "tor"] },
+        "is_vpn": { "type": "boolean" },
+        "is_proxy": { "type": "boolean" },
+        "is_tor": { "type": "boolean" },
+        "coordinates": {
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number" },
+            "lon": { "type": "number" }
+          }
+        },
+        "timezone": { "type": "string" }
+      }
     },
-    "user_id": {
-      "type": "string",
-      "description": "Unique identifier for the cardholder/account (e.g. usr_4012)"
+    "traceback": {
+      "type": "object",
+      "properties": {
+        "account_transaction_count": { "type": "integer" },
+        "previous_transaction_id": { "type": ["string", "null"] },
+        "previous_transaction_ts": { "type": ["string", "null"] },
+        "previous_amount": { "type": "number" },
+        "previous_merchant": { "type": "string" },
+        "previous_location": { "type": "string" },
+        "chain_risk_score": { "type": "number" },
+        "velocity_1hr": { "type": "integer" },
+        "velocity_24hr": { "type": "integer" },
+        "amount_delta_pct": { "type": "number" }
+      }
     },
-    "timestamp": {
-      "type": "string",
-      "format": "date-time",
-      "description": "ISO-8601 UTC timestamp when transaction occurred"
+    "time_analysis": {
+      "type": "object",
+      "properties": {
+        "transaction_hour": { "type": "integer", "minimum": 0, "maximum": 23 },
+        "transaction_day_of_week": { "type": "integer", "minimum": 0, "maximum": 6 },
+        "is_night_transaction": { "type": "boolean" },
+        "is_weekend": { "type": "boolean" },
+        "account_typical_hours": { "type": "array", "items": { "type": "integer" } },
+        "hour_anomaly": { "type": "boolean" },
+        "time_since_last_txn_mins": { "type": ["number", "null"] }
+      }
     },
-    "amount": {
-      "type": "number",
-      "minimum": 0.01,
-      "description": "Transaction monetary amount in USD"
+    "location_check": {
+      "type": "object",
+      "properties": {
+        "account_registered_city": { "type": "string" },
+        "account_registered_country": { "type": "string" },
+        "transaction_city": { "type": "string" },
+        "transaction_country": { "type": "string" },
+        "distance_km": { "type": "number" },
+        "is_international": { "type": "boolean" },
+        "is_impossible_travel": { "type": "boolean" },
+        "travel_speed_kmh": { "type": "number" }
+      }
     },
-    "velocity_6h": {
-      "type": "integer",
-      "minimum": 0,
-      "description": "Number of transactions attempted by user in past 6 hours"
-    },
-    "zip_count_4w": {
-      "type": "integer",
-      "minimum": 0,
-      "description": "Number of distinct ZIP codes used in past 4 weeks"
-    },
-    "payment_type": {
-      "type": "string",
-      "enum": ["card_present", "online_checkout", "contactless"],
-      "description": "Channel used for payment execution"
-    },
-    "merchant_category": {
-      "type": "string",
-      "description": "Category of merchant (e.g. electronics, grocery, crypto_exchange)"
-    },
-    "geo_distance_km": {
-      "type": "number",
-      "minimum": 0.0,
-      "description": "Distance in kilometers from user's primary residence"
-    },
-    "device_os": {
-      "type": "string",
-      "description": "Operating system of the initiating device (android, ios, windows, mac, linux)"
-    },
-    "fraud_bool": {
-      "type": "integer",
-      "enum": [0, 1],
-      "description": "Ground truth indicator from BAF dataset (0 = Legitimate, 1 = Fraudulent)"
+    "pii_enrichment": {
+      "type": "object",
+      "properties": {
+        "data_source": { "type": "string", "const": "MOCK_DEMO_DATA" },
+        "enrichment_status": { "type": "string", "enum": ["FOUND", "NOT_FOUND"] },
+        "account_holder_name": { "type": "string" },
+        "account_age_days": { "type": ["integer", "null"] },
+        "linked_phone_verified": { "type": ["boolean", "null"] },
+        "social_profile_risk_score": { "type": "number" },
+        "device_fingerprint": { "type": "string" },
+        "last_known_location": { "type": ["object", "null"] },
+        "location_matches_transaction": { "type": "boolean" }
+      }
     }
   }
 }

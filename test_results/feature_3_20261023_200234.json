@@ -1,0 +1,159 @@
+[
+  {
+    "feature": "FEATURE_3_TIME_SPAN_ANALYSIS",
+    "test_case": "Transaction at 2am, account never transacts at night -> UNUSUAL_HOUR",
+    "input": {
+      "transaction_id": "tx_f3_2am",
+      "source_account": "acc_f3_1",
+      "amount": 120.0,
+      "timestamp": "2026-10-21T06:00:00Z",
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    "expected_output": {
+      "transaction_hour": 2,
+      "is_night_transaction": true,
+      "flags": [
+        "UNUSUAL_HOUR"
+      ]
+    },
+    "actual_output": {
+      "time_analysis": {
+        "transaction_hour": 2,
+        "transaction_day_of_week": 2,
+        "is_night_transaction": true,
+        "is_weekend": false,
+        "account_typical_hours": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "hour_anomaly": true,
+        "time_since_last_txn_mins": null
+      },
+      "flags": [
+        "UNUSUAL_HOUR"
+      ],
+      "risk_points": 15
+    },
+    "passed": true,
+    "notes": "2am local transaction outside daytime typical hours triggers UNUSUAL_HOUR (+15 risk)."
+  },
+  {
+    "feature": "FEATURE_3_TIME_SPAN_ANALYSIS",
+    "test_case": "Two transactions 90 seconds apart -> RAPID_SUCCESSION",
+    "input": {
+      "tx": {
+        "transaction_id": "tx_f3_rapid_2",
+        "source_account": "acc_f3_2",
+        "amount": 80.0,
+        "timestamp": "2026-10-21T15:01:30Z"
+      },
+      "previous_ts": "2026-10-21T15:00:00Z"
+    },
+    "expected_output": {
+      "time_since_last_txn_mins": 1.5,
+      "flags": [
+        "RAPID_SUCCESSION"
+      ]
+    },
+    "actual_output": {
+      "time_analysis": {
+        "transaction_hour": 15,
+        "transaction_day_of_week": 2,
+        "is_night_transaction": false,
+        "is_weekend": false,
+        "account_typical_hours": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "hour_anomaly": false,
+        "time_since_last_txn_mins": 1.5
+      },
+      "flags": [
+        "RAPID_SUCCESSION"
+      ],
+      "risk_points": 20
+    },
+    "passed": true,
+    "notes": "90s gap (1.5 mins < 2.0 mins threshold) triggers RAPID_SUCCESSION (+20 risk)."
+  },
+  {
+    "feature": "FEATURE_3_TIME_SPAN_ANALYSIS",
+    "test_case": "Weekend transaction for business account logs is_weekend without automatic flag",
+    "input": {
+      "transaction_id": "tx_f3_weekend",
+      "source_account": "acc_f3_biz",
+      "account_type": "BUSINESS",
+      "amount": 200.0,
+      "timestamp": "2026-10-24T14:00:00Z",
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    "expected_output": {
+      "is_weekend": true,
+      "flags": [],
+      "risk_points": 0
+    },
+    "actual_output": {
+      "time_analysis": {
+        "transaction_hour": 14,
+        "transaction_day_of_week": 5,
+        "is_night_transaction": false,
+        "is_weekend": true,
+        "account_typical_hours": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "hour_anomaly": false,
+        "time_since_last_txn_mins": null
+      },
+      "flags": [],
+      "risk_points": 0
+    },
+    "passed": true,
+    "notes": "Saturday daytime business transaction records is_weekend=True with no false-positive flag."
+  }
+]

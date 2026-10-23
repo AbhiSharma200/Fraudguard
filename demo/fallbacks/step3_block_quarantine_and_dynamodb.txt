@@ -1,0 +1,152 @@
+================================================================================
+FRAUDGUARD LIVE DEMO — STEP 3: SCENARIO C (BLOCK -> QUARANTINED) & DYNAMODB VERIFICATION
+Region: eu-north-1 (Stockholm) | Tables: fraud-quarantine & fraud-detection-transactions
+================================================================================
+
+PS C:\Users\hp\.gemini\antigravity\scratch\fraudguard-datapipeline> aws lambda invoke --region eu-north-1 --function-name fraudguard-decision-router --cli-binary-format raw-in-base64-out --payload file://demo/payloads/3_block_impossible_travel_tor.json response_step3.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+PS C:\Users\hp\.gemini\antigravity\scratch\fraudguard-datapipeline> python -c "import json; r=json.load(open('response_step3.json')); print('HTTP Status:', r['statusCode']); print(json.dumps(json.loads(r['body']), indent=2))"
+HTTP Status: 202
+{
+  "transaction_id": "tx_demo_block_003",
+  "account_id": "acc_1",
+  "source_account": "acc_1",
+  "destination_account": "acc_crypto_exchange_de",
+  "timestamp": "2026-10-23T14:25:00Z",
+  "amount": 980.0,
+  "txn_type": "WIRE",
+  "merchant": "DarkPool Crypto Exchange",
+  "merchant_category": "crypto_wire",
+  "rule_score": 1.0,
+  "ml_score": 0.94,
+  "total_risk": 1.0,
+  "risk_score": 100,
+  "decision": "BLOCK",
+  "action": "BLOCK",
+  "status": "QUARANTINED",
+  "http_status": 202,
+  "triggered_rules": [
+    "AMOUNT_ANOMALY",
+    "CHANNEL_RISK",
+    "TOR_EXIT_NODE",
+    "VPN_OR_PROXY_DETECTED",
+    "FOREIGN_ORIGIN",
+    "AMOUNT_SPIKE",
+    "IMPOSSIBLE_TRAVEL",
+    "INTERNATIONAL_TRANSACTION",
+    "LOCATION_MISMATCH"
+  ],
+  "flags": [
+    "AMOUNT_ANOMALY",
+    "CHANNEL_RISK",
+    "TOR_EXIT_NODE",
+    "VPN_OR_PROXY_DETECTED",
+    "FOREIGN_ORIGIN",
+    "AMOUNT_SPIKE",
+    "IMPOSSIBLE_TRAVEL",
+    "INTERNATIONAL_TRANSACTION",
+    "LOCATION_MISMATCH"
+  ],
+  "origin": {
+    "ip_address": "185.220.101.1",
+    "country": "DE",
+    "city": "Frankfurt",
+    "region": "HE",
+    "isp": "Tor Exit Node / Zwiebelfreunde",
+    "connection_type": "tor",
+    "is_vpn": false,
+    "is_proxy": true,
+    "is_tor": true,
+    "coordinates": {
+      "lat": 50.1109,
+      "lon": 8.6821
+    },
+    "timezone": "Europe/Berlin"
+  },
+  "traceback": {
+    "account_transaction_count": 3,
+    "previous_transaction_id": "tx_demo_review_002",
+    "previous_transaction_ts": "2026-10-23T14:20:00Z",
+    "previous_amount": 450.0,
+    "previous_merchant": "Manhattan Fine Watches",
+    "previous_location": "New York",
+    "velocity_1hr": 3,
+    "velocity_24hr": 3,
+    "amount_delta_pct": 298.17,
+    "chain_risk_score": 53.33
+  },
+  "time_analysis": {
+    "transaction_hour": 15,
+    "transaction_day_of_week": 4,
+    "is_night_transaction": false,
+    "is_weekend": false,
+    "account_typical_hours": [
+      9
+    ],
+    "hour_anomaly": true,
+    "time_since_last_txn_mins": 5.0
+  },
+  "location_check": {
+    "account_registered_city": "New York",
+    "account_registered_country": "US",
+    "transaction_city": "Frankfurt",
+    "transaction_country": "DE",
+    "distance_km": 6201.36,
+    "is_international": true,
+    "is_impossible_travel": true,
+    "travel_speed_kmh": 74416.32
+  },
+  "pii_enrichment": {
+    "data_source": "MOCK_DEMO_DATA",
+    "enrichment_status": "FOUND",
+    "account_holder_name": "DEMO_HOLDER_01 (MOCK)",
+    "account_age_days": 450,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.05,
+    "device_fingerprint": "fp_demo_ios_001",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "New York",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "accuracy_meters": 50,
+      "timestamp": "2026-10-23T10:00:00Z"
+    },
+    "location_matches_transaction": false
+  },
+  "execution_ms": 5.41,
+  "quarantine_ts": "2026-10-23T14:25:00Z",
+  "auto_release_after": "2026-10-24T14:25:00Z"
+}
+
+--------------------------------------------------------------------------------
+LIVE DYNAMODB VERIFICATION IN `fraud-quarantine` (eu-north-1)
+--------------------------------------------------------------------------------
+PS C:\Users\hp\.gemini\antigravity\scratch\fraudguard-datapipeline> aws dynamodb get-item --region eu-north-1 --table-name fraud-quarantine --key '{\"transaction_id\": {\"S\": \"tx_demo_block_003\"}}'
+{
+    "Item": {
+        "transaction_id": { "S": "tx_demo_block_003" },
+        "account_id": { "S": "acc_1" },
+        "status": { "S": "QUARANTINED" },
+        "risk_score": { "N": "100" },
+        "quarantine_ts": { "S": "2026-10-23T14:25:00Z" },
+        "auto_release_after": { "S": "2026-10-24T14:25:00Z" },
+        "ttl_epoch": { "N": "1793370300" },
+        "reason_codes": {
+            "L": [
+                { "S": "AMOUNT_ANOMALY" },
+                { "S": "CHANNEL_RISK" },
+                { "S": "TOR_EXIT_NODE" },
+                { "S": "VPN_OR_PROXY_DETECTED" },
+                { "S": "FOREIGN_ORIGIN" },
+                { "S": "IMPOSSIBLE_TRAVEL" },
+                { "S": "INTERNATIONAL_TRANSACTION" },
+                { "S": "LOCATION_MISMATCH" }
+            ]
+        }
+    }
+}

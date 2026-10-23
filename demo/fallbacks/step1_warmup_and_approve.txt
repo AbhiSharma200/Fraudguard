@@ -1,0 +1,32 @@
+================================================================================
+FRAUDGUARD LIVE DEMO — STEP 1: LAMBDA WARM-UP & SCENARIO A (APPROVE)
+Region: eu-north-1 (Stockholm) | Function: fraudguard-decision-router (Python 3.12)
+================================================================================
+
+PS C:\Users\hp\.gemini\antigravity\scratch\fraudguard-datapipeline> aws lambda invoke --region eu-north-1 --function-name fraudguard-decision-router --cli-binary-format raw-in-base64-out --payload file://demo/payloads/1_approve_clean.json response_step1.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+PS C:\Users\hp\.gemini\antigravity\scratch\fraudguard-datapipeline> Get-Content response_step1.json | python -m json.tool
+{
+    "statusCode": 200,
+    "headers": {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type,Authorization,X-API-Key"
+    },
+    "body": "{\"transaction_id\": \"tx_demo_approve_001\", \"account_id\": \"acc_1\", \"source_account\": \"acc_1\", \"destination_account\": \"acc_merchant_coffee_ny\", \"timestamp\": \"2026-10-23T14:00:00Z\", \"amount\": 42.5, \"txn_type\": \"PURCHASE\", \"merchant\": \"Tribeca Coffee Roasters\", \"merchant_category\": \"food_beverage\", \"rule_score\": 0.0, \"ml_score\": 0.02, \"total_risk\": 0.0, \"risk_score\": 0, \"decision\": \"ALLOW\", \"action\": \"APPROVE\", \"status\": \"APPROVED\", \"http_status\": 200, \"triggered_rules\": [], \"flags\": [], \"origin\": {\"ip_address\": \"192.0.2.1\", \"country\": \"US\", \"city\": \"New York\", \"region\": \"NY\", \"isp\": \"Verizon Fios\", \"connection_type\": \"broadband\", \"is_vpn\": false, \"is_proxy\": false, \"is_tor\": false, \"coordinates\": {\"lat\": 40.7128, \"lon\": -74.006}, \"timezone\": \"America/New_York\"}, \"traceback\": {\"account_transaction_count\": 1, \"previous_transaction_id\": null, \"previous_transaction_ts\": null, \"previous_amount\": 0.0, \"previous_merchant\": \"\", \"previous_location\": \"\", \"velocity_1hr\": 1, \"velocity_24hr\": 1, \"amount_delta_pct\": 0.0, \"chain_risk_score\": 0.0}, \"time_analysis\": {\"transaction_hour\": 9, \"transaction_day_of_week\": 4, \"is_night_transaction\": false, \"is_weekend\": false, \"account_typical_hours\": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], \"hour_anomaly\": false, \"time_since_last_txn_mins\": null}, \"location_check\": {\"account_registered_city\": \"New York\", \"account_registered_country\": \"US\", \"transaction_city\": \"New York\", \"transaction_country\": \"US\", \"distance_km\": 0.0, \"is_international\": false, \"is_impossible_travel\": false, \"travel_speed_kmh\": 0.0}, \"pii_enrichment\": {\"data_source\": \"MOCK_DEMO_DATA\", \"enrichment_status\": \"FOUND\", \"account_holder_name\": \"DEMO_HOLDER_01 (MOCK)\", \"account_age_days\": 450, \"linked_phone_verified\": true, \"social_profile_risk_score\": 0.05, \"device_fingerprint\": \"fp_demo_ios_001\", \"last_known_location\": {\"source\": \"SIMULATED_CELL_TOWER\", \"city\": \"New York\", \"lat\": 40.7128, \"lon\": -74.006, \"accuracy_meters\": 50, \"timestamp\": \"2026-10-23T10:00:00Z\"}, \"location_matches_transaction\": true}, \"execution_ms\": 4.18}"
+}
+
+[PARSED DECISION SUMMARY]
+  Transaction ID : tx_demo_approve_001
+  Account Holder : acc_1 -> DEMO_HOLDER_01 (MOCK) [MOCK_DEMO_DATA]
+  Origin         : 192.0.2.1 (New York, US — Verizon Fios Broadband)
+  Amount         : $42.50 (PURCHASE @ Tribeca Coffee Roasters)
+  Risk Score     : 0 / 100
+  Decision       : ALLOW / APPROVE (Status: APPROVED, HTTP 200)
+  DynamoDB Table : fraud-detection-transactions (eu-north-1)
+  Execution Time : 4.18 ms

@@ -125,5 +125,1625 @@
     "triggered_rules": [],
     "id": "tx_fg_29",
     "_ts": "2026-08-26T11:06:53.763836Z"
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T17:26:35Z",
+    "ttl_epoch": 1800552395
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T17:28:59Z",
+    "ttl_epoch": 1800552539
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T17:36:48Z",
+    "ttl_epoch": 1800553008
+  },
+  {
+    "transaction_id": "tx_fg_demo_001_1792777036_1",
+    "account_id": "acc_1",
+    "source_account": "acc_1",
+    "destination_account": "acc_20",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 42.5,
+    "txn_type": "CREDIT",
+    "merchant": "WholeFoods Market",
+    "merchant_category": "grocery",
+    "rule_score": 0.0,
+    "ml_score": 0.0096,
+    "total_risk": 0.0,
+    "risk_score": 0,
+    "decision": "ALLOW",
+    "action": "APPROVE",
+    "status": "APPROVED",
+    "http_status": 200,
+    "triggered_rules": [],
+    "flags": [],
+    "origin": {
+      "country": "US",
+      "city": "New York",
+      "region": "NY",
+      "isp": "Verizon Fios",
+      "connection_type": "broadband",
+      "is_vpn": false,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 40.7128,
+        "lon": -74.006
+      },
+      "timezone": "America/New_York",
+      "ip_address": "192.0.2.1"
+    },
+    "traceback": {
+      "account_transaction_count": 1,
+      "previous_transaction_id": null,
+      "previous_transaction_ts": null,
+      "previous_amount": 0.0,
+      "previous_merchant": "",
+      "previous_location": "",
+      "chain_risk_score": 0.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 1,
+      "amount_delta_pct": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 10,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": null
+    },
+    "location_check": {
+      "account_registered_city": "New York",
+      "account_registered_country": "US",
+      "transaction_city": "New York",
+      "transaction_country": "US",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "enrichment_status": "FOUND",
+      "account_holder_name": "DEMO_HOLDER_01 (MOCK)",
+      "account_age_days": 450,
+      "linked_phone_verified": true,
+      "social_profile_risk_score": 0.05,
+      "device_fingerprint": "fp_demo_ios_001",
+      "last_known_location": {
+        "source": "SIMULATED_CELL_TOWER",
+        "city": "New York",
+        "lat": 40.7128,
+        "lon": -74.006,
+        "accuracy_meters": 50,
+        "timestamp": "2026-10-23T10:00:00Z"
+      },
+      "location_matches_transaction": true
+    },
+    "execution_ms": 93.4,
+    "id": "tx_fg_demo_001_1792777036_1",
+    "_ts": "2026-10-23T17:37:16Z",
+    "ttl_epoch": 1800553036
+  },
+  {
+    "transaction_id": "tx_fg_demo_002_1792777036_2",
+    "account_id": "acc_2",
+    "source_account": "acc_2",
+    "destination_account": "acc_15",
+    "timestamp": "2026-10-23T14:05:00Z",
+    "amount": 135.0,
+    "txn_type": "CREDIT",
+    "merchant": "LuxuryWatch Co",
+    "merchant_category": "jewelry",
+    "rule_score": 0.55,
+    "ml_score": 0.0096,
+    "total_risk": 0.55,
+    "risk_score": 55,
+    "decision": "REVIEW_QUEUE",
+    "action": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "http_status": 200,
+    "triggered_rules": [
+      "ORIGIN_VPN",
+      "GEO_ORIGIN_MISMATCH",
+      "UNUSUAL_HOUR",
+      "NEW_ACCOUNT"
+    ],
+    "flags": [
+      "ORIGIN_VPN",
+      "GEO_ORIGIN_MISMATCH",
+      "UNUSUAL_HOUR",
+      "NEW_ACCOUNT"
+    ],
+    "origin": {
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN / Tefincom S.A.",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam",
+      "ip_address": "198.51.100.50"
+    },
+    "traceback": {
+      "account_transaction_count": 1,
+      "previous_transaction_id": null,
+      "previous_transaction_ts": null,
+      "previous_amount": 0.0,
+      "previous_merchant": "",
+      "previous_location": "",
+      "chain_risk_score": 55.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 1,
+      "amount_delta_pct": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 2,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": true,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": true,
+      "time_since_last_txn_mins": null
+    },
+    "location_check": {
+      "account_registered_city": "New York",
+      "account_registered_country": "US",
+      "transaction_city": "New York",
+      "transaction_country": "US",
+      "distance_km": 5863.22,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "enrichment_status": "FOUND",
+      "account_holder_name": "DEMO_HOLDER_02 (MOCK)",
+      "account_age_days": 12,
+      "linked_phone_verified": true,
+      "social_profile_risk_score": 0.35,
+      "device_fingerprint": "fp_demo_and_002",
+      "last_known_location": {
+        "source": "SIMULATED_CELL_TOWER",
+        "city": "New York",
+        "lat": 40.7128,
+        "lon": -74.006,
+        "accuracy_meters": 65,
+        "timestamp": "2026-10-23T10:00:00Z"
+      },
+      "location_matches_transaction": true
+    },
+    "execution_ms": 43.22,
+    "id": "tx_fg_demo_002_1792777036_2",
+    "_ts": "2026-10-23T17:37:16Z",
+    "ttl_epoch": 1800553036
+  },
+  {
+    "transaction_id": "tx_fg_demo_004_1792777036_4",
+    "account_id": "acc_4",
+    "source_account": "acc_4",
+    "destination_account": "acc_12",
+    "timestamp": "2026-10-23T14:15:00Z",
+    "amount": 60.0,
+    "txn_type": "CREDIT",
+    "merchant": "Mumbai Electronics",
+    "merchant_category": "electronics",
+    "rule_score": 0.15,
+    "ml_score": 0.0096,
+    "total_risk": 0.15,
+    "risk_score": 15,
+    "decision": "ALLOW",
+    "action": "APPROVE",
+    "status": "APPROVED",
+    "http_status": 200,
+    "triggered_rules": [
+      "NEW_ACCOUNT",
+      "UNVERIFIED_CONTACT"
+    ],
+    "flags": [
+      "NEW_ACCOUNT",
+      "UNVERIFIED_CONTACT"
+    ],
+    "origin": {
+      "country": "IN",
+      "city": "Mumbai",
+      "region": "MH",
+      "isp": "Reliance Jio",
+      "connection_type": "mobile",
+      "is_vpn": false,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 19.076,
+        "lon": 72.8777
+      },
+      "timezone": "Asia/Kolkata",
+      "ip_address": "203.0.113.10"
+    },
+    "traceback": {
+      "account_transaction_count": 1,
+      "previous_transaction_id": null,
+      "previous_transaction_ts": null,
+      "previous_amount": 0.0,
+      "previous_merchant": "",
+      "previous_location": "",
+      "chain_risk_score": 15.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 1,
+      "amount_delta_pct": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 19,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": null
+    },
+    "location_check": {
+      "account_registered_city": "Mumbai",
+      "account_registered_country": "IN",
+      "transaction_city": "Mumbai",
+      "transaction_country": "IN",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "enrichment_status": "FOUND",
+      "account_holder_name": "DEMO_HOLDER_04 (MOCK)",
+      "account_age_days": 5,
+      "linked_phone_verified": false,
+      "social_profile_risk_score": 0.85,
+      "device_fingerprint": "fp_demo_emu_004",
+      "last_known_location": {
+        "source": "SIMULATED_CELL_TOWER",
+        "city": "Mumbai",
+        "lat": 19.076,
+        "lon": 72.8777,
+        "accuracy_meters": 100,
+        "timestamp": "2026-10-23T10:00:00Z"
+      },
+      "location_matches_transaction": true
+    },
+    "execution_ms": 17.4,
+    "id": "tx_fg_demo_004_1792777036_4",
+    "_ts": "2026-10-23T17:37:16Z",
+    "ttl_epoch": 1800553036
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T17:38:34Z",
+    "ttl_epoch": 1800553114
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T18:20:10Z",
+    "ttl_epoch": 1800555610
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T18:22:20Z",
+    "ttl_epoch": 1800555740
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T18:35:01Z",
+    "ttl_epoch": 1800556501,
+    "ttl_expiry": 1795372501
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T18:40:18Z",
+    "ttl_epoch": 1800556818,
+    "ttl_expiry": 1795372818
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T18:43:17Z",
+    "ttl_epoch": 1800556997,
+    "ttl_expiry": 1795372997
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T18:49:45Z",
+    "ttl_epoch": 1800557385,
+    "ttl_expiry": 1795373385
+  },
+  {
+    "transaction_id": "tx_special id'100",
+    "account_id": "acc_1",
+    "source_account": "acc_1",
+    "amount": 12.0,
+    "decision": "ALLOW",
+    "status": "APPROVED",
+    "risk_score": 0,
+    "timestamp": "2026-10-23T14:00:00+00:00",
+    "id": "tx_special id'100",
+    "_ts": "2026-10-23T18:49:50Z",
+    "ttl_epoch": 1800557390,
+    "ttl_expiry": 1795373390
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T19:13:48Z",
+    "ttl_epoch": 1800558828,
+    "ttl_expiry": 1795374828
+  },
+  {
+    "transaction_id": "tx_special id'100",
+    "account_id": "acc_1",
+    "source_account": "acc_1",
+    "amount": 12.0,
+    "decision": "ALLOW",
+    "status": "APPROVED",
+    "risk_score": 0,
+    "timestamp": "2026-10-23T14:00:00+00:00",
+    "id": "tx_special id'100",
+    "_ts": "2026-10-23T19:14:20Z",
+    "ttl_epoch": 1800558860,
+    "ttl_expiry": 1795374860
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T19:14:20Z",
+    "ttl_epoch": 1800558860,
+    "ttl_expiry": 1795374860
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T19:21:06Z",
+    "ttl_epoch": 1800559266,
+    "ttl_expiry": 1795375266
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T20:01:54Z",
+    "ttl_epoch": 1800561714,
+    "ttl_expiry": 1795377714
+  },
+  {
+    "transaction_id": "tx_special id'100",
+    "account_id": "acc_1",
+    "source_account": "acc_1",
+    "amount": 12.0,
+    "decision": "ALLOW",
+    "status": "APPROVED",
+    "risk_score": 0,
+    "timestamp": "2026-10-23T14:00:00+00:00",
+    "id": "tx_special id'100",
+    "_ts": "2026-10-23T20:02:33Z",
+    "ttl_epoch": 1800561753,
+    "ttl_expiry": 1795377753
+  },
+  {
+    "transaction_id": "tx_f6_detail_test",
+    "account_id": "acc_f6_1",
+    "source_account": "acc_f6_1",
+    "timestamp": "2026-10-23T14:00:00Z",
+    "amount": 320.5,
+    "merchant": "ElectroWorld",
+    "merchant_category": "electronics",
+    "risk_score": 78,
+    "decision": "REVIEW_QUEUE",
+    "status": "PENDING_REVIEW",
+    "flags": [
+      "ORIGIN_VPN",
+      "AMOUNT_ANOMALY"
+    ],
+    "origin": {
+      "ip_address": "198.51.100.50",
+      "country": "NL",
+      "city": "Amsterdam",
+      "region": "NH",
+      "isp": "NordVPN",
+      "connection_type": "vpn",
+      "is_vpn": true,
+      "is_proxy": false,
+      "is_tor": false,
+      "coordinates": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "timezone": "Europe/Amsterdam"
+    },
+    "traceback": {
+      "account_transaction_count": 2,
+      "previous_transaction_id": "tx_f6_prev_1",
+      "previous_transaction_ts": "2026-10-23T12:00:00Z",
+      "previous_amount": 100.0,
+      "previous_merchant": "GroceryMart",
+      "previous_location": "Amsterdam",
+      "chain_risk_score": 44.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 2,
+      "amount_delta_pct": 220.5
+    },
+    "location_check": {
+      "account_registered_city": "Amsterdam",
+      "account_registered_country": "NL",
+      "transaction_city": "Amsterdam",
+      "transaction_country": "NL",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "time_analysis": {
+      "transaction_hour": 15,
+      "transaction_day_of_week": 4,
+      "is_night_transaction": false,
+      "is_weekend": false,
+      "account_typical_hours": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hour_anomaly": false,
+      "time_since_last_txn_mins": 120.0
+    },
+    "pii_enrichment": {
+      "data_source": "MOCK_DEMO_DATA",
+      "account_holder_name": "DEMO_HOLDER_06",
+      "account_age_days": 120,
+      "linked_phone_verified": true,
+      "location_matches_transaction": true
+    },
+    "id": "tx_f6_detail_test",
+    "_ts": "2026-10-23T20:02:34Z",
+    "ttl_epoch": 1800561754,
+    "ttl_expiry": 1795377754
   }
 ]

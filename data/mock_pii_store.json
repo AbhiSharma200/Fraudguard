@@ -1,0 +1,342 @@
+{
+  "acc_1": {
+    "account_holder_name": "DEMO_HOLDER_01 (MOCK)",
+    "account_age_days": 450,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.05,
+    "device_fingerprint": "fp_demo_ios_001",
+    "registered_city": "New York",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "New York",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "accuracy_meters": 50,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_2": {
+    "account_holder_name": "DEMO_HOLDER_02 (MOCK)",
+    "account_age_days": 12,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.35,
+    "device_fingerprint": "fp_demo_and_002",
+    "registered_city": "New York",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "New York",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "accuracy_meters": 65,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_3": {
+    "account_holder_name": "DEMO_HOLDER_03 (MOCK)",
+    "account_age_days": 180,
+    "linked_phone_verified": false,
+    "social_profile_risk_score": 0.65,
+    "device_fingerprint": "fp_demo_web_003",
+    "registered_city": "Chicago",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "Chicago",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "accuracy_meters": 80,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_4": {
+    "account_holder_name": "DEMO_HOLDER_04 (MOCK)",
+    "account_age_days": 5,
+    "linked_phone_verified": false,
+    "social_profile_risk_score": 0.85,
+    "device_fingerprint": "fp_demo_emu_004",
+    "registered_city": "Mumbai",
+    "registered_country": "IN",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "Mumbai",
+      "lat": 19.076,
+      "lon": 72.8777,
+      "accuracy_meters": 100,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_5": {
+    "account_holder_name": "DEMO_HOLDER_05 (MOCK)",
+    "account_age_days": 730,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.1,
+    "device_fingerprint": "fp_demo_mac_005",
+    "registered_city": "San Francisco",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "San Francisco",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "accuracy_meters": 40,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_6": {
+    "account_holder_name": "DEMO_HOLDER_06 (MOCK)",
+    "account_age_days": 310,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.12,
+    "device_fingerprint": "fp_demo_win_006",
+    "registered_city": "London",
+    "registered_country": "GB",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "London",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "accuracy_meters": 55,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_7": {
+    "account_holder_name": "DEMO_HOLDER_07 (MOCK)",
+    "account_age_days": 22,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.4,
+    "device_fingerprint": "fp_demo_ios_007",
+    "registered_city": "Boston",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "Boston",
+      "lat": 42.3601,
+      "lon": -71.0589,
+      "accuracy_meters": 60,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_8": {
+    "account_holder_name": "DEMO_HOLDER_08 (MOCK)",
+    "account_age_days": 95,
+    "linked_phone_verified": false,
+    "social_profile_risk_score": 0.55,
+    "device_fingerprint": "fp_demo_and_008",
+    "registered_city": "Amsterdam",
+    "registered_country": "NL",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "Amsterdam",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "accuracy_meters": 70,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_9": {
+    "account_holder_name": "DEMO_HOLDER_09 (MOCK)",
+    "account_age_days": 540,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.08,
+    "device_fingerprint": "fp_demo_ios_009",
+    "registered_city": "New York",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "New York",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "accuracy_meters": 45,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_10": {
+    "account_holder_name": "DEMO_HOLDER_10 (MOCK)",
+    "account_age_days": 14,
+    "linked_phone_verified": false,
+    "social_profile_risk_score": 0.78,
+    "device_fingerprint": "fp_demo_tor_010",
+    "registered_city": "Frankfurt",
+    "registered_country": "DE",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "Frankfurt",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "accuracy_meters": 90,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_11": {
+    "account_holder_name": "DEMO_HOLDER_11 (MOCK)",
+    "account_age_days": 260,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.15,
+    "device_fingerprint": "fp_demo_win_011",
+    "registered_city": "New York",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "New York",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "accuracy_meters": 50,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_12": {
+    "account_holder_name": "DEMO_HOLDER_12 (MOCK)",
+    "account_age_days": 400,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.09,
+    "device_fingerprint": "fp_demo_mac_012",
+    "registered_city": "Chicago",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "Chicago",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "accuracy_meters": 50,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_13": {
+    "account_holder_name": "DEMO_HOLDER_13 (MOCK)",
+    "account_age_days": 8,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.42,
+    "device_fingerprint": "fp_demo_and_013",
+    "registered_city": "Singapore",
+    "registered_country": "SG",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "Singapore",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "accuracy_meters": 60,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_14": {
+    "account_holder_name": "DEMO_HOLDER_14 (MOCK)",
+    "account_age_days": 620,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.04,
+    "device_fingerprint": "fp_demo_ios_014",
+    "registered_city": "New York",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "New York",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "accuracy_meters": 35,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_15": {
+    "account_holder_name": "DEMO_HOLDER_15 (MOCK)",
+    "account_age_days": 150,
+    "linked_phone_verified": false,
+    "social_profile_risk_score": 0.5,
+    "device_fingerprint": "fp_demo_win_015",
+    "registered_city": "Zurich",
+    "registered_country": "CH",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "Zurich",
+      "lat": 47.3769,
+      "lon": 8.5417,
+      "accuracy_meters": 75,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_16": {
+    "account_holder_name": "DEMO_HOLDER_16 (MOCK)",
+    "account_age_days": 330,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.11,
+    "device_fingerprint": "fp_demo_mac_016",
+    "registered_city": "New York",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "New York",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "accuracy_meters": 45,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_17": {
+    "account_holder_name": "DEMO_HOLDER_17 (MOCK)",
+    "account_age_days": 19,
+    "linked_phone_verified": false,
+    "social_profile_risk_score": 0.72,
+    "device_fingerprint": "fp_demo_and_017",
+    "registered_city": "Bucharest",
+    "registered_country": "RO",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "Bucharest",
+      "lat": 44.4268,
+      "lon": 26.1025,
+      "accuracy_meters": 95,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_18": {
+    "account_holder_name": "DEMO_HOLDER_18 (MOCK)",
+    "account_age_days": 890,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.03,
+    "device_fingerprint": "fp_demo_ios_018",
+    "registered_city": "Washington",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "Washington",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "accuracy_meters": 40,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_19": {
+    "account_holder_name": "DEMO_HOLDER_19 (MOCK)",
+    "account_age_days": 275,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.14,
+    "device_fingerprint": "fp_demo_win_019",
+    "registered_city": "Pittsburgh",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "Pittsburgh",
+      "lat": 40.4406,
+      "lon": -79.9959,
+      "accuracy_meters": 55,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  },
+  "acc_20": {
+    "account_holder_name": "DEMO_HOLDER_20 (MOCK)",
+    "account_age_days": 510,
+    "linked_phone_verified": true,
+    "social_profile_risk_score": 0.06,
+    "device_fingerprint": "fp_demo_mac_020",
+    "registered_city": "New York",
+    "registered_country": "US",
+    "last_known_location": {
+      "source": "SIMULATED_CELL_TOWER",
+      "city": "New York",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "accuracy_meters": 50,
+      "timestamp": "2026-10-23T10:00:00Z"
+    }
+  }
+}

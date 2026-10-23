@@ -1,0 +1,150 @@
+[
+  {
+    "feature": "FEATURE_4_LOCATION_CHECK",
+    "test_case": "Same city transaction -> distance < 50km, no flag",
+    "input": {
+      "transaction_id": "tx_f4_same",
+      "account_registered_city": "New York",
+      "account_registered_country": "US",
+      "transaction_city": "New York",
+      "transaction_country": "US"
+    },
+    "expected_output": {
+      "distance_km": 0.0,
+      "flags": [],
+      "force_block": false
+    },
+    "actual_output": {
+      "location_check": {
+        "account_registered_city": "New York",
+        "account_registered_country": "US",
+        "transaction_city": "New York",
+        "transaction_country": "US",
+        "distance_km": 0.0,
+        "is_international": false,
+        "is_impossible_travel": false,
+        "travel_speed_kmh": 0.0
+      },
+      "flags": [],
+      "force_block": false
+    },
+    "passed": true,
+    "notes": "Same city (New York -> New York) yields 0.0 km distance and no flags."
+  },
+  {
+    "feature": "FEATURE_4_LOCATION_CHECK",
+    "test_case": "Mumbai -> London in 10 minutes -> IMPOSSIBLE_TRAVEL -> BLOCK",
+    "input": {
+      "tx": {
+        "transaction_id": "tx_f4_impossible",
+        "account_registered_city": "Mumbai",
+        "account_registered_country": "IN",
+        "transaction_city": "London",
+        "transaction_country": "GB"
+      },
+      "prev": {
+        "location": "Mumbai",
+        "origin": {
+          "city": "Mumbai",
+          "country": "IN"
+        }
+      },
+      "time_since_last_mins": 10.0
+    },
+    "expected_output": {
+      "is_impossible_travel": true,
+      "flags": [
+        "IMPOSSIBLE_TRAVEL",
+        "INTERNATIONAL_TRANSACTION"
+      ],
+      "force_block": true
+    },
+    "actual_output": {
+      "location_check": {
+        "account_registered_city": "Mumbai",
+        "account_registered_country": "IN",
+        "transaction_city": "London",
+        "transaction_country": "GB",
+        "distance_km": 7191.7,
+        "is_international": true,
+        "is_impossible_travel": true,
+        "travel_speed_kmh": 43150.2
+      },
+      "flags": [
+        "IMPOSSIBLE_TRAVEL",
+        "INTERNATIONAL_TRANSACTION"
+      ],
+      "force_block": true
+    },
+    "passed": true,
+    "notes": "Mumbai->London (~7191 km in 10m = 43150.2 km/h) triggers IMPOSSIBLE_TRAVEL and automatic BLOCK."
+  },
+  {
+    "feature": "FEATURE_4_LOCATION_CHECK",
+    "test_case": "First transaction (no previous location) -> skip travel check gracefully",
+    "input": {
+      "transaction_id": "tx_f4_first",
+      "account_registered_city": "Chicago",
+      "account_registered_country": "US",
+      "transaction_city": "Chicago",
+      "transaction_country": "US"
+    },
+    "expected_output": {
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0,
+      "flags": []
+    },
+    "actual_output": {
+      "location_check": {
+        "account_registered_city": "Chicago",
+        "account_registered_country": "US",
+        "transaction_city": "Chicago",
+        "transaction_country": "US",
+        "distance_km": 0.0,
+        "is_international": false,
+        "is_impossible_travel": false,
+        "travel_speed_kmh": 0.0
+      },
+      "flags": []
+    },
+    "passed": true,
+    "notes": "First transaction without prior location skips travel speed calculation gracefully."
+  },
+  {
+    "feature": "FEATURE_4_LOCATION_CHECK",
+    "test_case": "Domestic travel ~500km in 8 hours -> no impossible travel flag",
+    "input": {
+      "tx": {
+        "transaction_id": "tx_f4_domestic_travel",
+        "account_registered_city": "New York",
+        "account_registered_country": "US",
+        "transaction_city": "Pittsburgh",
+        "transaction_country": "US"
+      },
+      "prev": {
+        "location": "New York"
+      },
+      "time_since_last_mins": 480.0
+    },
+    "expected_output": {
+      "is_impossible_travel": false,
+      "flags": [],
+      "force_block": false
+    },
+    "actual_output": {
+      "location_check": {
+        "account_registered_city": "New York",
+        "account_registered_country": "US",
+        "transaction_city": "Pittsburgh",
+        "transaction_country": "US",
+        "distance_km": 506.69,
+        "is_international": false,
+        "is_impossible_travel": false,
+        "travel_speed_kmh": 63.34
+      },
+      "flags": []
+    },
+    "passed": true,
+    "notes": "New York->Pittsburgh (506.69 km in 8h = 63.34 km/h) passes without IMPOSSIBLE_TRAVEL."
+  }
+]

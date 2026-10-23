@@ -1,0 +1,23 @@
+{
+  "transaction_id": "tx_demo_block_003",
+  "account_id": "acc_1",
+  "source_account": "acc_1",
+  "destination_account": "acc_crypto_exchange_de",
+  "merchant": "DarkPool Crypto Exchange",
+  "merchant_category": "crypto_wire",
+  "amount": 980.00,
+  "txn_type": "WIRE",
+  "timestamp": "2026-10-23T14:25:00Z",
+  "ip_address": "185.220.101.1",
+  "transaction_city": "Frankfurt",
+  "transaction_country": "DE",
+  "previous_transaction": {
+    "transaction_id": "tx_demo_review_002",
+    "timestamp": "2026-10-23T14:20:00Z",
+    "transaction_city": "New York",
+    "coordinates": {
+      "lat": 40.7128,
+      "lon": -74.0060
+    }
+  }
+}

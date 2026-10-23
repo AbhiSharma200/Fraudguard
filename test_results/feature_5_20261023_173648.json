@@ -1,0 +1,137 @@
+[
+  {
+    "feature": "FEATURE_5_QUARANTINE_SYSTEM",
+    "test_case": "BLOCK decision -> in quarantine table, NOT main table, HTTP 202",
+    "input": {
+      "transaction_id": "tx_f5_block_1",
+      "source_account": "acc_f5_1",
+      "amount": 9500.0,
+      "timestamp": "2026-10-23T12:00:00Z"
+    },
+    "expected_output": {
+      "http_status": 202,
+      "in_quarantine": true,
+      "in_main": false
+    },
+    "actual_output": {
+      "http_status": 202,
+      "in_quarantine": true,
+      "in_main": false,
+      "quarantine_record": {
+        "transaction_id": "tx_f5_block_1",
+        "account_id": "acc_f5_1",
+        "quarantine_ts": "2026-10-23T12:00:00Z",
+        "reason_codes": [
+          "ORIGIN_TOR",
+          "IMPOSSIBLE_TRAVEL"
+        ],
+        "risk_score": 95,
+        "original_payload": {
+          "transaction_id": "tx_f5_block_1",
+          "source_account": "acc_f5_1",
+          "amount": 9500.0,
+          "timestamp": "2026-10-23T12:00:00Z"
+        },
+        "status": "QUARANTINED",
+        "auto_release_after": "2026-10-24T12:00:00Z",
+        "analyst_notes": null
+      }
+    },
+    "passed": true,
+    "notes": "BLOCK transaction is written exclusively to fraud-quarantine and returns HTTP 202."
+  },
+  {
+    "feature": "FEATURE_5_QUARANTINE_SYSTEM",
+    "test_case": "APPROVE decision -> in main table, NOT quarantine",
+    "input": {
+      "transaction_id": "tx_f5_approve_1",
+      "source_account": "acc_f5_2",
+      "amount": 25.0,
+      "decision": "APPROVE",
+      "status": "APPROVED",
+      "timestamp": "2026-10-23T12:05:00Z"
+    },
+    "expected_output": {
+      "in_main": true,
+      "in_quarantine": false
+    },
+    "actual_output": {
+      "in_main": true,
+      "in_quarantine": false
+    },
+    "passed": true,
+    "notes": "APPROVE transaction is stored in main table only."
+  },
+  {
+    "feature": "FEATURE_5_QUARANTINE_SYSTEM",
+    "test_case": "Release API call changes status from QUARANTINED to RELEASED (with auth verification)",
+    "input": {
+      "transaction_id": "tx_f5_block_1",
+      "analyst_notes": "Verified legitimate travel with cardholder"
+    },
+    "expected_output": {
+      "unauth_http_status": 401,
+      "auth_http_status": 200,
+      "status": "RELEASED"
+    },
+    "actual_output": {
+      "unauth_response": {
+        "http_status": 401,
+        "error": "UNAUTHORIZED",
+        "message": "Valid X-API-Key or Bearer token is required to release quarantined transactions."
+      },
+      "auth_response": {
+        "http_status": 200,
+        "transaction_id": "tx_f5_block_1",
+        "status": "RELEASED",
+        "record": {
+          "transaction_id": "tx_f5_block_1",
+          "account_id": "acc_f5_1",
+          "quarantine_ts": "2026-10-23T12:00:00Z",
+          "reason_codes": [
+            "ORIGIN_TOR",
+            "IMPOSSIBLE_TRAVEL"
+          ],
+          "risk_score": 95,
+          "original_payload": {
+            "transaction_id": "tx_f5_block_1",
+            "source_account": "acc_f5_1",
+            "amount": 9500.0,
+            "timestamp": "2026-10-23T12:00:00Z"
+          },
+          "status": "RELEASED",
+          "auto_release_after": "2026-10-24T12:00:00Z",
+          "analyst_notes": "Verified legitimate travel with cardholder",
+          "ttl_epoch": 1793381808,
+          "updated_ts": "2026-10-23T17:36:48Z"
+        }
+      }
+    },
+    "passed": true,
+    "notes": "Unauthenticated release rejected with 401; authenticated release updates status to RELEASED."
+  },
+  {
+    "feature": "FEATURE_5_QUARANTINE_SYSTEM",
+    "test_case": "Quarantine count alarm -> mock insert 101 records, verify CloudWatch metric fires",
+    "input": {
+      "inserted_quarantined_records": 101,
+      "threshold": 100
+    },
+    "expected_output": {
+      "value": 101,
+      "alarm_fired": true,
+      "alarm_state": "ALARM"
+    },
+    "actual_output": {
+      "namespace": "FraudGuard/Security",
+      "metric_name": "QuarantineTableCount",
+      "value": 101,
+      "threshold": 100,
+      "alarm_state": "ALARM",
+      "alarm_fired": true,
+      "timestamp": "2026-10-23T17:36:48Z"
+    },
+    "passed": true,
+    "notes": "101 active quarantined transactions exceed threshold 100 and fire CloudWatch alarm."
+  }
+]

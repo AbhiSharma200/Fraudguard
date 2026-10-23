@@ -1,0 +1,14 @@
+{
+  "transaction_id": "tx_demo_review_002",
+  "account_id": "acc_1",
+  "source_account": "acc_1",
+  "destination_account": "acc_merchant_luxury_ny",
+  "merchant": "Manhattan Fine Watches",
+  "merchant_category": "luxury_retail",
+  "amount": 450.00,
+  "txn_type": "PURCHASE",
+  "timestamp": "2026-10-23T14:20:00Z",
+  "ip_address": "192.0.2.1",
+  "transaction_city": "New York",
+  "transaction_country": "US"
+}

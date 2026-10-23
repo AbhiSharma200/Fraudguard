@@ -1,0 +1,175 @@
+[
+  {
+    "feature": "FEATURE_1_ORIGIN_TRACING",
+    "test_case": "VPN IP detection",
+    "input": {
+      "transaction_id": "tx_f1_vpn",
+      "source_account": "acc_f1_1",
+      "amount": 50.0,
+      "txn_type": "CREDIT",
+      "origin_ip": "198.51.100.50",
+      "registered_country": "NL"
+    },
+    "expected_output": {
+      "flags": [
+        "ORIGIN_VPN"
+      ],
+      "risk_points": 20,
+      "force_block": false
+    },
+    "actual_output": {
+      "flags": [
+        "ORIGIN_VPN"
+      ],
+      "risk_points": 20,
+      "force_block": false,
+      "origin": {
+        "country": "NL",
+        "city": "Amsterdam",
+        "region": "NH",
+        "isp": "NordVPN / Tefincom S.A.",
+        "connection_type": "vpn",
+        "is_vpn": true,
+        "is_proxy": false,
+        "is_tor": false,
+        "coordinates": {
+          "lat": 52.3676,
+          "lon": 4.9041
+        },
+        "timezone": "Europe/Amsterdam",
+        "ip_address": "198.51.100.50"
+      }
+    },
+    "passed": true,
+    "notes": "VPN IP correctly triggers ORIGIN_VPN and +20 risk score bump."
+  },
+  {
+    "feature": "FEATURE_1_ORIGIN_TRACING",
+    "test_case": "TOR IP detection + BLOCK action",
+    "input": {
+      "transaction_id": "tx_f1_tor",
+      "source_account": "acc_f1_2",
+      "amount": 40.0,
+      "txn_type": "CREDIT",
+      "origin_ip": "185.220.101.1",
+      "registered_country": "DE"
+    },
+    "expected_output": {
+      "flags": [
+        "ORIGIN_TOR"
+      ],
+      "risk_points": 20,
+      "force_block": true
+    },
+    "actual_output": {
+      "flags": [
+        "ORIGIN_TOR"
+      ],
+      "risk_points": 20,
+      "force_block": true,
+      "origin": {
+        "country": "DE",
+        "city": "Frankfurt",
+        "region": "HE",
+        "isp": "Tor Exit Node / Zwiebelfreunde",
+        "connection_type": "tor",
+        "is_vpn": false,
+        "is_proxy": true,
+        "is_tor": true,
+        "coordinates": {
+          "lat": 50.1109,
+          "lon": 8.6821
+        },
+        "timezone": "Europe/Berlin",
+        "ip_address": "185.220.101.1"
+      }
+    },
+    "passed": true,
+    "notes": "TOR exit node triggers ORIGIN_TOR, +20 risk points, and force_block=True."
+  },
+  {
+    "feature": "FEATURE_1_ORIGIN_TRACING",
+    "test_case": "Mismatched country detection",
+    "input": {
+      "transaction_id": "tx_f1_mismatch",
+      "source_account": "acc_f1_3",
+      "amount": 75.0,
+      "txn_type": "CREDIT",
+      "origin_ip": "198.51.100.20",
+      "registered_country": "US"
+    },
+    "expected_output": {
+      "flags": [
+        "GEO_ORIGIN_MISMATCH"
+      ],
+      "risk_points": 10,
+      "force_block": false
+    },
+    "actual_output": {
+      "flags": [
+        "GEO_ORIGIN_MISMATCH"
+      ],
+      "risk_points": 10,
+      "force_block": false,
+      "origin": {
+        "country": "GB",
+        "city": "London",
+        "region": "ENG",
+        "isp": "British Telecom",
+        "connection_type": "broadband",
+        "is_vpn": false,
+        "is_proxy": false,
+        "is_tor": false,
+        "coordinates": {
+          "lat": 51.5074,
+          "lon": -0.1278
+        },
+        "timezone": "Europe/London",
+        "ip_address": "198.51.100.20"
+      }
+    },
+    "passed": true,
+    "notes": "Cross-border IP (GB vs US registered) triggers GEO_ORIGIN_MISMATCH and +10 risk points."
+  },
+  {
+    "feature": "FEATURE_1_ORIGIN_TRACING",
+    "test_case": "Clean domestic IP + regression check",
+    "input": {
+      "transaction_id": "tx_f1_clean",
+      "source_account": "acc_f1_4",
+      "amount": 160.0,
+      "txn_type": "WIRE",
+      "timestamp": "2026-10-01T10:00:00Z",
+      "origin_ip": "192.0.2.1",
+      "registered_country": "US"
+    },
+    "expected_output": {
+      "flags": [],
+      "risk_points": 0,
+      "base_rule_score": 0.4
+    },
+    "actual_output": {
+      "flags": [],
+      "risk_points": 0,
+      "base_rule_score": 0.4,
+      "origin": {
+        "country": "US",
+        "city": "New York",
+        "region": "NY",
+        "isp": "Verizon Fios",
+        "connection_type": "broadband",
+        "is_vpn": false,
+        "is_proxy": false,
+        "is_tor": false,
+        "coordinates": {
+          "lat": 40.7128,
+          "lon": -74.006
+        },
+        "timezone": "America/New_York",
+        "ip_address": "192.0.2.1"
+      }
+    },
+    "passed": true,
+    "notes": "Clean domestic IP adds 0 risk points and preserves identical base RuleEngine scoring."
+  }
+]

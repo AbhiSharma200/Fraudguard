@@ -1,0 +1,102 @@
+================================================================================
+FRAUDGUARD LIVE DEMO — STEP 4: LIVE DASHBOARD (PORT 8081) & QUARANTINE RELEASE
+Dashboard URL: http://localhost:8081 | http://<ec2-ip>:8081
+================================================================================
+
+1. LIVE DASHBOARD FEED CHECK (`GET /api/transactions` on Port 8081):
+PS C:\Users\hp\.gemini\antigravity\scratch\fraudguard-datapipeline> curl.exe -s http://localhost:8081/api/transactions | python -m json.tool
+{
+  "status": "ok",
+  "region": "eu-north-1",
+  "summary": {
+    "total": 3,
+    "approved": 1,
+    "review_queue": 1,
+    "blocked_quarantined": 1
+  },
+  "transactions": [
+    {
+      "transaction_id": "tx_demo_block_003",
+      "account_id": "acc_1",
+      "amount": 980.0,
+      "risk_score": 100,
+      "decision": "BLOCK",
+      "action": "BLOCK",
+      "status": "QUARANTINED",
+      "flags": [
+        "AMOUNT_ANOMALY",
+        "CHANNEL_RISK",
+        "TOR_EXIT_NODE",
+        "VPN_OR_PROXY_DETECTED",
+        "FOREIGN_ORIGIN",
+        "IMPOSSIBLE_TRAVEL",
+        "INTERNATIONAL_TRANSACTION",
+        "LOCATION_MISMATCH"
+      ],
+      "origin": {
+        "ip_address": "185.220.101.1",
+        "city": "Frankfurt",
+        "country": "DE",
+        "is_tor": true,
+        "coordinates": { "lat": 50.1109, "lon": 8.6821 }
+      },
+      "location_check": {
+        "account_registered_city": "New York",
+        "transaction_city": "Frankfurt",
+        "distance_km": 6201.36,
+        "is_impossible_travel": true,
+        "travel_speed_kmh": 74416.32
+      }
+    },
+    {
+      "transaction_id": "tx_demo_review_002",
+      "account_id": "acc_1",
+      "amount": 450.0,
+      "risk_score": 60,
+      "decision": "REVIEW_QUEUE",
+      "action": "REVIEW_QUEUE",
+      "status": "PENDING_REVIEW",
+      "flags": ["AMOUNT_ANOMALY", "AMOUNT_SPIKE"]
+    },
+    {
+      "transaction_id": "tx_demo_approve_001",
+      "account_id": "acc_1",
+      "amount": 42.5,
+      "risk_score": 0,
+      "decision": "ALLOW",
+      "action": "APPROVE",
+      "status": "APPROVED",
+      "flags": []
+    }
+  ]
+}
+
+--------------------------------------------------------------------------------
+2. ANALYST QUARANTINE RELEASE (`POST /release` with X-API-Key Authentication):
+--------------------------------------------------------------------------------
+PS C:\Users\hp\.gemini\antigravity\scratch\fraudguard-datapipeline> python -c "import json, src.lambda_function as lf; ev={'httpMethod':'POST','path':'/release','headers':{'X-API-Key':'fg-analyst-demo-key-2026'},'body':open('demo/payloads/4_release_quarantine.json').read()}; res=lf.lambda_handler(ev); print('HTTP Status:', res['statusCode']); print(json.dumps(json.loads(res['body']), indent=2))"
+HTTP Status: 200
+{
+  "http_status": 200,
+  "transaction_id": "tx_demo_block_003",
+  "status": "RELEASED",
+  "record": {
+    "transaction_id": "tx_demo_block_003",
+    "account_id": "acc_1",
+    "quarantine_ts": "2026-10-23T14:25:00Z",
+    "reason_codes": [
+      "AMOUNT_ANOMALY",
+      "CHANNEL_RISK",
+      "TOR_EXIT_NODE",
+      "VPN_OR_PROXY_DETECTED",
+      "FOREIGN_ORIGIN",
+      "IMPOSSIBLE_TRAVEL",
+      "INTERNATIONAL_TRANSACTION",
+      "LOCATION_MISMATCH"
+    ],
+    "risk_score": 100,
+    "status": "RELEASED",
+    "auto_release_after": "2026-10-24T14:25:00Z",
+    "analyst_notes": "Verified executive travel override with cardholder via 2FA."
+  }
+}

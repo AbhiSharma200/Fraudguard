@@ -1,0 +1,86 @@
+[
+  {
+    "scenario": "Scenario 1 \u2014 Clean transaction (should APPROVE)",
+    "passed": true,
+    "http_status": 200,
+    "decision": "ALLOW",
+    "risk_score": 0,
+    "flags": []
+  },
+  {
+    "scenario": "Scenario 2 \u2014 Soft fraud (should REVIEW_QUEUE)",
+    "passed": true,
+    "http_status": 200,
+    "decision": "REVIEW_QUEUE",
+    "risk_score": 55,
+    "flags": [
+      "ORIGIN_VPN",
+      "GEO_ORIGIN_MISMATCH",
+      "UNUSUAL_HOUR",
+      "NEW_ACCOUNT"
+    ]
+  },
+  {
+    "scenario": "Scenario 3 \u2014 Hard fraud (should BLOCK + QUARANTINE)",
+    "passed": true,
+    "http_status": 202,
+    "decision": "BLOCK",
+    "risk_score": 100,
+    "flags": [
+      "AMOUNT_ANOMALY",
+      "CHANNEL_RISK",
+      "HIGH_VELOCITY",
+      "ORIGIN_TOR",
+      "GEO_ORIGIN_MISMATCH",
+      "VELOCITY_SPIKE",
+      "AMOUNT_SPIKE",
+      "IMPOSSIBLE_TRAVEL",
+      "INTERNATIONAL_TRANSACTION",
+      "LOCATION_MISMATCH",
+      "NEW_ACCOUNT",
+      "UNVERIFIED_CONTACT"
+    ],
+    "in_quarantine": true,
+    "in_main": false
+  },
+  {
+    "scenario": "Scenario 4 \u2014 Edge case: first transaction ever for 1-day-old account",
+    "passed": true,
+    "http_status": 200,
+    "decision": "ALLOW",
+    "traceback": {
+      "account_transaction_count": 1,
+      "previous_transaction_id": null,
+      "previous_transaction_ts": null,
+      "previous_amount": 0.0,
+      "previous_merchant": "",
+      "previous_location": "",
+      "chain_risk_score": 10.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 1,
+      "amount_delta_pct": 0.0
+    },
+    "location_check": {
+      "account_registered_city": "New York",
+      "account_registered_country": "US",
+      "transaction_city": "New York",
+      "transaction_country": "US",
+      "distance_km": 0.0,
+      "is_international": false,
+      "is_impossible_travel": false,
+      "travel_speed_kmh": 0.0
+    },
+    "flags": [
+      "NEW_ACCOUNT"
+    ]
+  },
+  {
+    "scenario": "Scenario 5 \u2014 Stress test (50 txns in <10s, no timeouts, no duplicate IDs, malformed JSON handling)",
+    "passed": true,
+    "total_txns": 50,
+    "duration_sec": 0.743,
+    "max_single_invocation_ms": 31.53,
+    "duplicate_status_code": 409,
+    "malformed_status_code": 400
+  }
+]

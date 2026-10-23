@@ -1,0 +1,154 @@
+[
+  {
+    "feature": "FEATURE_7_PII_ENRICHMENT",
+    "test_case": "Known account, location match -> no PII flags",
+    "input": {
+      "transaction_id": "tx_f7_match",
+      "source_account": "acc_1",
+      "transaction_city": "New York"
+    },
+    "expected_output": {
+      "data_source": "MOCK_DEMO_DATA",
+      "flags": [],
+      "risk_points": 0
+    },
+    "actual_output": {
+      "pii_enrichment": {
+        "data_source": "MOCK_DEMO_DATA",
+        "enrichment_status": "FOUND",
+        "account_holder_name": "DEMO_HOLDER_01 (MOCK)",
+        "account_age_days": 450,
+        "linked_phone_verified": true,
+        "social_profile_risk_score": 0.05,
+        "device_fingerprint": "fp_demo_ios_001",
+        "last_known_location": {
+          "source": "SIMULATED_CELL_TOWER",
+          "city": "New York",
+          "lat": 40.7128,
+          "lon": -74.006,
+          "accuracy_meters": 50,
+          "timestamp": "2026-10-23T10:00:00Z"
+        },
+        "location_matches_transaction": true
+      },
+      "flags": [],
+      "risk_points": 0
+    },
+    "passed": true,
+    "notes": "acc_1 (450d old, phone verified, New York) matches transaction city with 0 risk points."
+  },
+  {
+    "feature": "FEATURE_7_PII_ENRICHMENT",
+    "test_case": "New account (< 30 days) -> NEW_ACCOUNT flag (+10)",
+    "input": {
+      "transaction_id": "tx_f7_new",
+      "source_account": "acc_2",
+      "transaction_city": "New York"
+    },
+    "expected_output": {
+      "flags": [
+        "NEW_ACCOUNT"
+      ],
+      "risk_points": 10
+    },
+    "actual_output": {
+      "pii_enrichment": {
+        "data_source": "MOCK_DEMO_DATA",
+        "enrichment_status": "FOUND",
+        "account_holder_name": "DEMO_HOLDER_02 (MOCK)",
+        "account_age_days": 12,
+        "linked_phone_verified": true,
+        "social_profile_risk_score": 0.35,
+        "device_fingerprint": "fp_demo_and_002",
+        "last_known_location": {
+          "source": "SIMULATED_CELL_TOWER",
+          "city": "New York",
+          "lat": 40.7128,
+          "lon": -74.006,
+          "accuracy_meters": 65,
+          "timestamp": "2026-10-23T10:00:00Z"
+        },
+        "location_matches_transaction": true
+      },
+      "flags": [
+        "NEW_ACCOUNT"
+      ],
+      "risk_points": 10
+    },
+    "passed": true,
+    "notes": "acc_2 (12 days < 30 days) triggers NEW_ACCOUNT (+10 risk)."
+  },
+  {
+    "feature": "FEATURE_7_PII_ENRICHMENT",
+    "test_case": "Phone unverified + location mismatch -> both flags stack (+20)",
+    "input": {
+      "transaction_id": "tx_f7_stack",
+      "source_account": "acc_3",
+      "transaction_city": "London"
+    },
+    "expected_output": {
+      "flags": [
+        "LOCATION_MISMATCH",
+        "UNVERIFIED_CONTACT"
+      ],
+      "risk_points": 20
+    },
+    "actual_output": {
+      "pii_enrichment": {
+        "data_source": "MOCK_DEMO_DATA",
+        "enrichment_status": "FOUND",
+        "account_holder_name": "DEMO_HOLDER_03 (MOCK)",
+        "account_age_days": 180,
+        "linked_phone_verified": false,
+        "social_profile_risk_score": 0.65,
+        "device_fingerprint": "fp_demo_web_003",
+        "last_known_location": {
+          "source": "SIMULATED_CELL_TOWER",
+          "city": "Chicago",
+          "lat": 41.8781,
+          "lon": -87.6298,
+          "accuracy_meters": 80,
+          "timestamp": "2026-10-23T10:00:00Z"
+        },
+        "location_matches_transaction": false
+      },
+      "flags": [
+        "LOCATION_MISMATCH",
+        "UNVERIFIED_CONTACT"
+      ],
+      "risk_points": 20
+    },
+    "passed": true,
+    "notes": "Location mismatch (+15) and unverified phone (+5) stack cleanly to +20 risk points."
+  },
+  {
+    "feature": "FEATURE_7_PII_ENRICHMENT",
+    "test_case": "Unknown account_id -> gracefully return enrichment_status: NOT_FOUND",
+    "input": {
+      "transaction_id": "tx_f7_unknown",
+      "source_account": "acc_999_nonexistent",
+      "transaction_city": "New York"
+    },
+    "expected_output": {
+      "enrichment_status": "NOT_FOUND",
+      "data_source": "MOCK_DEMO_DATA",
+      "flags": []
+    },
+    "actual_output": {
+      "pii_enrichment": {
+        "data_source": "MOCK_DEMO_DATA",
+        "enrichment_status": "NOT_FOUND",
+        "account_holder_name": "DEMO_UNREGISTERED (MOCK)",
+        "account_age_days": null,
+        "linked_phone_verified": null,
+        "social_profile_risk_score": 0.0,
+        "device_fingerprint": "unknown",
+        "last_known_location": null,
+        "location_matches_transaction": true
+      },
+      "flags": []
+    },
+    "passed": true,
+    "notes": "Unknown account returns enrichment_status=NOT_FOUND and data_source=MOCK_DEMO_DATA without crashing."
+  }
+]

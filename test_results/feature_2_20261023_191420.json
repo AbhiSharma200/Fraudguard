@@ -1,0 +1,141 @@
+[
+  {
+    "feature": "FEATURE_2_TRANSACTION_TRACEBACK",
+    "test_case": "6 transactions in 1 hour -> VELOCITY_SPIKE (no double counting)",
+    "input": {
+      "account": "acc_f2_vel",
+      "txn_count": 6,
+      "window_mins": 30
+    },
+    "expected_output": {
+      "flags": [
+        "VELOCITY_SPIKE"
+      ],
+      "velocity_1hr": 6
+    },
+    "actual_output": {
+      "flags": [
+        "VELOCITY_SPIKE"
+      ],
+      "traceback": {
+        "account_transaction_count": 6,
+        "previous_transaction_id": "tx_vel_5",
+        "previous_transaction_ts": "2026-10-23T12:25:00+00:00",
+        "previous_amount": 50.0,
+        "previous_merchant": "Amazon",
+        "previous_location": "New York",
+        "chain_risk_score": 10.0,
+        "velocity_1hr": 6,
+        "velocity_24hr": 6,
+        "amount_delta_pct": 0.0
+      },
+      "re_eval_velocity_1hr": 6
+    },
+    "passed": true,
+    "notes": "6th transaction in 1h window raises VELOCITY_SPIKE and avoids double-counting current transaction."
+  },
+  {
+    "feature": "FEATURE_2_TRANSACTION_TRACEBACK",
+    "test_case": "Transaction 5x account average amount -> AMOUNT_SPIKE",
+    "input": {
+      "transaction_id": "tx_amt_4",
+      "source_account": "acc_f2_amt",
+      "amount": 500.0,
+      "timestamp": "2026-10-23T17:00:00+00:00",
+      "merchant": "BestBuy",
+      "location": "Chicago"
+    },
+    "expected_output": {
+      "flags": [
+        "AMOUNT_SPIKE"
+      ],
+      "amount_delta_pct": 400.0
+    },
+    "actual_output": {
+      "flags": [
+        "AMOUNT_SPIKE"
+      ],
+      "traceback": {
+        "account_transaction_count": 4,
+        "previous_transaction_id": "tx_amt_3",
+        "previous_transaction_ts": "2026-10-23T15:00:00+00:00",
+        "previous_amount": 100.0,
+        "previous_merchant": "Target",
+        "previous_location": "Chicago",
+        "chain_risk_score": 20.0,
+        "velocity_1hr": 1,
+        "velocity_24hr": 4,
+        "amount_delta_pct": 400.0
+      }
+    },
+    "passed": true,
+    "notes": "5x amount ($500 vs $100 baseline = +400% delta) triggers AMOUNT_SPIKE."
+  },
+  {
+    "feature": "FEATURE_2_TRANSACTION_TRACEBACK",
+    "test_case": "First-ever transaction handles null previous_transaction_id",
+    "input": {
+      "transaction_id": "tx_first_1",
+      "source_account": "acc_f2_brand_new",
+      "amount": 45.0,
+      "timestamp": "2026-10-23T12:00:00+00:00"
+    },
+    "expected_output": {
+      "previous_transaction_id": null,
+      "account_transaction_count": 1,
+      "flags": []
+    },
+    "actual_output": {
+      "account_transaction_count": 1,
+      "previous_transaction_id": null,
+      "previous_transaction_ts": null,
+      "previous_amount": 0.0,
+      "previous_merchant": "",
+      "previous_location": "",
+      "chain_risk_score": 5.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 1,
+      "amount_delta_pct": 0.0
+    },
+    "passed": true,
+    "notes": "First transaction cleanly sets previous_transaction_id=None with count=1."
+  },
+  {
+    "feature": "FEATURE_2_TRANSACTION_TRACEBACK",
+    "test_case": "Chain of 10 transactions rolling chain_risk_score accuracy",
+    "input": {
+      "account": "acc_f2_chain",
+      "scores": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100
+      ]
+    },
+    "expected_output": {
+      "account_transaction_count": 10,
+      "chain_risk_score": 80.0,
+      "previous_transaction_id": "tx_chain_9"
+    },
+    "actual_output": {
+      "account_transaction_count": 10,
+      "previous_transaction_id": "tx_chain_9",
+      "previous_transaction_ts": "2026-10-24T06:00:00+00:00",
+      "previous_amount": 50.0,
+      "previous_merchant": "",
+      "previous_location": "",
+      "chain_risk_score": 80.0,
+      "velocity_1hr": 1,
+      "velocity_24hr": 10,
+      "amount_delta_pct": 0.0
+    },
+    "passed": true,
+    "notes": "Rolling average of last 5 scores [60, 70, 80, 90, 100] equals 80.0."
+  }
+]

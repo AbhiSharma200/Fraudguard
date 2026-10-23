@@ -1,0 +1,265 @@
+[
+  {
+    "transaction_id": "tx_fg_demo_003_1792777036_3",
+    "account_id": "acc_10",
+    "quarantine_ts": "2026-10-23T14:10:00Z",
+    "reason_codes": [
+      "AMOUNT_ANOMALY",
+      "CHANNEL_RISK",
+      "ORIGIN_TOR",
+      "NEW_ACCOUNT",
+      "UNVERIFIED_CONTACT"
+    ],
+    "risk_score": 100,
+    "original_payload": {
+      "transaction_id": "tx_fg_demo_003_1792777036_3",
+      "account_id": "acc_10",
+      "source_account": "acc_10",
+      "destination_account": "acc_99",
+      "timestamp": "2026-10-23T14:10:00Z",
+      "amount": 950.0,
+      "txn_type": "WIRE",
+      "merchant": "CryptoVault Exchange",
+      "merchant_category": "crypto_exchange",
+      "rule_score": 1.0,
+      "ml_score": 0.9635,
+      "total_risk": 1.0,
+      "risk_score": 100,
+      "decision": "BLOCK",
+      "action": "BLOCK",
+      "status": "QUARANTINED",
+      "http_status": 202,
+      "triggered_rules": [
+        "AMOUNT_ANOMALY",
+        "CHANNEL_RISK",
+        "ORIGIN_TOR",
+        "NEW_ACCOUNT",
+        "UNVERIFIED_CONTACT"
+      ],
+      "flags": [
+        "AMOUNT_ANOMALY",
+        "CHANNEL_RISK",
+        "ORIGIN_TOR",
+        "NEW_ACCOUNT",
+        "UNVERIFIED_CONTACT"
+      ],
+      "origin": {
+        "country": "DE",
+        "city": "Frankfurt",
+        "region": "HE",
+        "isp": "Tor Exit Node / Zwiebelfreunde",
+        "connection_type": "tor",
+        "is_vpn": false,
+        "is_proxy": true,
+        "is_tor": true,
+        "coordinates": {
+          "lat": 50.1109,
+          "lon": 8.6821
+        },
+        "timezone": "Europe/Berlin",
+        "ip_address": "185.220.101.1"
+      },
+      "traceback": {
+        "account_transaction_count": 1,
+        "previous_transaction_id": null,
+        "previous_transaction_ts": null,
+        "previous_amount": 0.0,
+        "previous_merchant": "",
+        "previous_location": "",
+        "chain_risk_score": 100.0,
+        "velocity_1hr": 1,
+        "velocity_24hr": 1,
+        "amount_delta_pct": 0.0
+      },
+      "time_analysis": {
+        "transaction_hour": 16,
+        "transaction_day_of_week": 4,
+        "is_night_transaction": false,
+        "is_weekend": false,
+        "account_typical_hours": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "hour_anomaly": false,
+        "time_since_last_txn_mins": null
+      },
+      "location_check": {
+        "account_registered_city": "Frankfurt",
+        "account_registered_country": "DE",
+        "transaction_city": "Frankfurt",
+        "transaction_country": "DE",
+        "distance_km": 0.0,
+        "is_international": false,
+        "is_impossible_travel": false,
+        "travel_speed_kmh": 0.0
+      },
+      "pii_enrichment": {
+        "data_source": "MOCK_DEMO_DATA",
+        "enrichment_status": "FOUND",
+        "account_holder_name": "DEMO_HOLDER_10 (MOCK)",
+        "account_age_days": 14,
+        "linked_phone_verified": false,
+        "social_profile_risk_score": 0.78,
+        "device_fingerprint": "fp_demo_tor_010",
+        "last_known_location": {
+          "source": "SIMULATED_CELL_TOWER",
+          "city": "Frankfurt",
+          "lat": 50.1109,
+          "lon": 8.6821,
+          "accuracy_meters": 90,
+          "timestamp": "2026-10-23T10:00:00Z"
+        },
+        "location_matches_transaction": true
+      },
+      "execution_ms": 36.46
+    },
+    "status": "QUARANTINED",
+    "auto_release_after": "2026-10-24T14:10:00Z",
+    "analyst_notes": null,
+    "ttl_epoch": 1793381836
+  },
+  {
+    "transaction_id": "tx_fg_demo_005_1792777036_5",
+    "account_id": "acc_4",
+    "quarantine_ts": "2026-10-23T14:16:00Z",
+    "reason_codes": [
+      "AMOUNT_ANOMALY",
+      "CHANNEL_RISK",
+      "GEO_ORIGIN_MISMATCH",
+      "AMOUNT_SPIKE",
+      "RAPID_SUCCESSION",
+      "IMPOSSIBLE_TRAVEL",
+      "INTERNATIONAL_TRANSACTION",
+      "LOCATION_MISMATCH",
+      "NEW_ACCOUNT",
+      "UNVERIFIED_CONTACT"
+    ],
+    "risk_score": 100,
+    "original_payload": {
+      "transaction_id": "tx_fg_demo_005_1792777036_5",
+      "account_id": "acc_4",
+      "source_account": "acc_4",
+      "destination_account": "acc_18",
+      "timestamp": "2026-10-23T14:16:00Z",
+      "amount": 600.0,
+      "txn_type": "WIRE",
+      "merchant": "London Gold Bullion",
+      "merchant_category": "precious_metals",
+      "rule_score": 1.0,
+      "ml_score": 0.9635,
+      "total_risk": 1.0,
+      "risk_score": 100,
+      "decision": "BLOCK",
+      "action": "BLOCK",
+      "status": "QUARANTINED",
+      "http_status": 202,
+      "triggered_rules": [
+        "AMOUNT_ANOMALY",
+        "CHANNEL_RISK",
+        "GEO_ORIGIN_MISMATCH",
+        "AMOUNT_SPIKE",
+        "RAPID_SUCCESSION",
+        "IMPOSSIBLE_TRAVEL",
+        "INTERNATIONAL_TRANSACTION",
+        "LOCATION_MISMATCH",
+        "NEW_ACCOUNT",
+        "UNVERIFIED_CONTACT"
+      ],
+      "flags": [
+        "AMOUNT_ANOMALY",
+        "CHANNEL_RISK",
+        "GEO_ORIGIN_MISMATCH",
+        "AMOUNT_SPIKE",
+        "RAPID_SUCCESSION",
+        "IMPOSSIBLE_TRAVEL",
+        "INTERNATIONAL_TRANSACTION",
+        "LOCATION_MISMATCH",
+        "NEW_ACCOUNT",
+        "UNVERIFIED_CONTACT"
+      ],
+      "origin": {
+        "country": "GB",
+        "city": "London",
+        "region": "ENG",
+        "isp": "British Telecom",
+        "connection_type": "broadband",
+        "is_vpn": false,
+        "is_proxy": false,
+        "is_tor": false,
+        "coordinates": {
+          "lat": 51.5074,
+          "lon": -0.1278
+        },
+        "timezone": "Europe/London",
+        "ip_address": "198.51.100.20"
+      },
+      "traceback": {
+        "account_transaction_count": 2,
+        "previous_transaction_id": "tx_fg_demo_004_1792777036_4",
+        "previous_transaction_ts": "2026-10-23T14:15:00Z",
+        "previous_amount": 60.0,
+        "previous_merchant": "Mumbai Electronics",
+        "previous_location": "Mumbai",
+        "chain_risk_score": 57.5,
+        "velocity_1hr": 2,
+        "velocity_24hr": 2,
+        "amount_delta_pct": 900.0
+      },
+      "time_analysis": {
+        "transaction_hour": 15,
+        "transaction_day_of_week": 4,
+        "is_night_transaction": false,
+        "is_weekend": false,
+        "account_typical_hours": [
+          19
+        ],
+        "hour_anomaly": true,
+        "time_since_last_txn_mins": 1.0
+      },
+      "location_check": {
+        "account_registered_city": "Mumbai",
+        "account_registered_country": "IN",
+        "transaction_city": "London",
+        "transaction_country": "GB",
+        "distance_km": 7191.7,
+        "is_international": true,
+        "is_impossible_travel": true,
+        "travel_speed_kmh": 431502.0
+      },
+      "pii_enrichment": {
+        "data_source": "MOCK_DEMO_DATA",
+        "enrichment_status": "FOUND",
+        "account_holder_name": "DEMO_HOLDER_04 (MOCK)",
+        "account_age_days": 5,
+        "linked_phone_verified": false,
+        "social_profile_risk_score": 0.85,
+        "device_fingerprint": "fp_demo_emu_004",
+        "last_known_location": {
+          "source": "SIMULATED_CELL_TOWER",
+          "city": "Mumbai",
+          "lat": 19.076,
+          "lon": 72.8777,
+          "accuracy_meters": 100,
+          "timestamp": "2026-10-23T10:00:00Z"
+        },
+        "location_matches_transaction": false
+      },
+      "execution_ms": 56.39
+    },
+    "status": "QUARANTINED",
+    "auto_release_after": "2026-10-24T14:16:00Z",
+    "analyst_notes": null,
+    "ttl_epoch": 1793381836
+  }
+]
